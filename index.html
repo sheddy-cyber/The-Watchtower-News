@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Watchtower - Daily News</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.562.0/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="header-top-content">
+          <span id="current-date"></span>
+          <div class="header-top-right">
+            <button
+              class="icon-btn"
+              id="notification-btn"
+              aria-label="Notifications"
+            >
+              <i data-lucide="bell"></i>
+              <span class="notification-badge">3</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="masthead">
+        <h1>The Watchtower</h1>
+        <p class="tagline">Truth in Every Edition</p>
+      </div>
+
+      <div class="search-container">
+        <div class="search-wrapper">
+          <i data-lucide="search" class="search-icon"></i>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search articles, topics, authors..."
+            class="search-input"
+          />
+          <button id="search-btn" class="search-btn">Search</button>
+        </div>
+      </div>
+
+      <nav>
+        <button
+          class="mobile-menu-toggle"
+          id="mobile-menu-toggle"
+          aria-label="Toggle menu"
+        >
+          <i data-lucide="menu"></i>
+        </button>
+        <ul id="nav-menu">
+          <li>
+            <a href="index.html" class="active"
+              ><i data-lucide="home"></i> Home</a
+            >
+          </li>
+          <li>
+            <a href="category.html?cat=World"
+              ><i data-lucide="globe"></i> World</a
+            >
+          </li>
+          <li>
+            <a href="category.html?cat=Technology"
+              ><i data-lucide="cpu"></i> Technology</a
+            >
+          </li>
+          <li>
+            <a href="category.html?cat=Business"
+              ><i data-lucide="briefcase"></i> Business</a
+            >
+          </li>
+          <li>
+            <a href="category.html?cat=Health"
+              ><i data-lucide="heart"></i> Health</a
+            >
+          </li>
+          <li>
+            <a href="category.html?cat=Sports"
+              ><i data-lucide="trophy"></i> Sports</a
+            >
+          </li>
+          <li>
+            <a href="#" id="auth-link" class="auth-link"
+              ><i data-lucide="user"></i> <span id="auth-text">Sign In</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="trending-bar">
+        <div class="trending-container">
+          <div class="trending-content">
+            <span class="trending-label">
+              <i data-lucide="trending-up"></i> Trending Now
+            </span>
+            <div class="trending-topics" id="trending-topics"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="search-results" id="search-results" style="display: none">
+          <div class="search-results-header">
+            <h2 id="search-results-title">Search Results</h2>
+            <button id="clear-search" class="clear-search-btn">
+              <i data-lucide="x"></i> Clear Search
+            </button>
+          </div>
+          <div class="articles-grid" id="search-results-grid"></div>
+        </div>
+
+        <div id="homepage-content">
+          <div class="homepage-grid">
+            <div class="featured-article" id="featured-article"></div>
+            <div class="sidebar" id="sidebar-articles"></div>
+          </div>
+          <div id="category-sections"></div>
+        </div>
+      </div>
+    </main>
+
+    <div class="modal" id="newsletter-modal">
+      <div class="modal-content">
+        <button class="modal-close" id="close-newsletter">
+          <i data-lucide="x"></i>
+        </button>
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Get the latest news delivered directly to your inbox.</p>
+        <form id="newsletter-form">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            required
+            id="newsletter-email"
+          />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="auth-modal">
+      <div class="modal-content">
+        <button class="modal-close" id="close-auth">
+          <i data-lucide="x"></i>
+        </button>
+        <div id="auth-tabs">
+          <button class="auth-tab active" data-tab="signin">Sign In</button>
+          <button class="auth-tab" data-tab="signup">Sign Up</button>
+        </div>
+
+        <form id="signin-form" class="auth-form">
+          <h2>Welcome Back</h2>
+          <input type="email" placeholder="Email" required id="signin-email" />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            id="signin-password"
+          />
+          <button type="submit">Sign In</button>
+        </form>
+
+        <form id="signup-form" class="auth-form" style="display: none">
+          <h2>Create Account</h2>
+          <input
+            type="text"
+            placeholder="Full Name"
+            required
+            id="signup-name"
+          />
+          <input type="email" placeholder="Email" required id="signup-email" />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            id="signup-password"
+          />
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-grid">
+          <div class="footer-section">
+            <h3>The Watchtower</h3>
+            <p>Truth in Every Edition</p>
+            <div class="social-links">
+              <a href="#" aria-label="Facebook"
+                ><i data-lucide="facebook"></i
+              ></a>
+              <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i data-lucide="linkedin"></i
+              ></a>
+              <a href="#" aria-label="Mail"><i data-lucide="mail"></i></a>
+            </div>
+          </div>
+          <div class="footer-section">
+            <h4>Categories</h4>
+            <ul>
+              <li><a href="category.html?cat=World">World</a></li>
+              <li><a href="category.html?cat=Technology">Technology</a></li>
+              <li><a href="category.html?cat=Business">Business</a></li>
+              <li><a href="category.html?cat=Sports">Sports</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Newsletter</h4>
+            <p>Stay updated with our latest news</p>
+            <button class="newsletter-btn" id="newsletter-btn">
+              <i data-lucide="mail"></i> Subscribe
+            </button>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 The Watchtower. All rights reserved.</p>
+          <p>Established 1892 | Independent News Since the Beginning</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
