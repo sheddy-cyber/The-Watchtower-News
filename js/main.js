@@ -1,4 +1,4 @@
-// Main JavaScript - Cleaned (Authentication Removed)
+// Main JavaScript
 document.addEventListener("DOMContentLoaded", function () {
   displayCurrentDate();
   loadFeaturedArticle();
@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   loadTrendingTopics();
   setupMobileMenu();
   setupNewsletter();
+  setupAuth();
   setupSearch();
   updateBookmarkButtons();
   initializeIcons();
@@ -214,61 +215,6 @@ function setupNewsletter() {
     showToast("Successfully subscribed to newsletter!", "success");
     modal.classList.remove("active");
     form.reset();
-  });
-}
-
-function setupSearch() {
-  const searchBtn = document.getElementById("search-btn");
-  const searchInput = document.getElementById("search-input");
-  const clearBtn = document.getElementById("clear-search");
-  const resultsSection = document.getElementById("search-results");
-  const homepageContent = document.getElementById("homepage-content");
-  const resultsGrid = document.getElementById("search-results-grid");
-  const resultsTitle = document.getElementById("search-results-title");
-
-  if (!searchBtn || !searchInput) return;
-
-  const performSearch = () => {
-    const query = searchInput.value.trim();
-
-    if (!query) {
-      showToast("Please enter a search term", "error");
-      return;
-    }
-
-    const results = newsData.searchArticles(query);
-
-    resultsTitle.textContent = `Search Results for "${query}"`;
-    homepageContent.style.display = "none";
-    resultsSection.style.display = "block";
-
-    if (results.length === 0) {
-      resultsGrid.innerHTML = `
-        <div class="no-results">
-          <i data-lucide="search-x"></i>
-          <h3>No results found</h3>
-          <p>Try different keywords</p>
-        </div>
-      `;
-    } else {
-      resultsGrid.innerHTML = results
-        .map((article) => createArticleCard(article))
-        .join("");
-      setupArticleActions();
-    }
-
-    initializeIcons();
-  };
-
-  searchBtn.addEventListener("click", performSearch);
-  searchInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") performSearch();
-  });
-
-  clearBtn.addEventListener("click", () => {
-    searchInput.value = "";
-    homepageContent.style.display = "block";
-    resultsSection.style.display = "none";
   });
 }
 

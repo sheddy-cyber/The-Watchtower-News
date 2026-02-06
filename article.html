@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Watchtower - Daily News</title>
+    <title>Article - The Watchtower</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/additional-styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.562.0/dist/umd/lucide.min.js"></script>
   </head>
   <body>
@@ -53,9 +54,7 @@
         </button>
         <ul id="nav-menu">
           <li>
-            <a href="index.html" class="active"
-              ><i data-lucide="home"></i> Home</a
-            >
+            <a href="index.html"><i data-lucide="home"></i> Home</a>
           </li>
           <li>
             <a href="category.html?cat=World"
@@ -92,34 +91,62 @@
     </header>
 
     <main>
-      <div class="trending-bar">
-        <div class="trending-container">
-          <div class="trending-content">
-            <span class="trending-label">
-              <i data-lucide="trending-up"></i> Trending Now
-            </span>
-            <div class="trending-topics" id="trending-topics"></div>
-          </div>
-        </div>
-      </div>
-
       <div class="container">
-        <div class="search-results" id="search-results" style="display: none">
-          <div class="search-results-header">
-            <h2 id="search-results-title">Search Results</h2>
-            <button id="clear-search" class="clear-search-btn">
-              <i data-lucide="x"></i> Clear Search
-            </button>
-          </div>
-          <div class="articles-grid" id="search-results-grid"></div>
-        </div>
+        <div class="breadcrumb" id="breadcrumb"></div>
 
-        <div id="homepage-content">
-          <div class="homepage-grid">
-            <div class="featured-article" id="featured-article"></div>
-            <div class="sidebar" id="sidebar-articles"></div>
+        <article class="article-page">
+          <div class="article-header">
+            <span class="category-tag" id="article-category"></span>
+            <h1 id="article-title"></h1>
+            <div class="article-meta" id="article-meta"></div>
+            <div class="article-actions-bar">
+              <button class="action-btn bookmark-btn" id="bookmark-btn">
+                <i data-lucide="bookmark"></i> <span>Bookmark</span>
+              </button>
+              <button class="action-btn share-btn" id="share-btn">
+                <i data-lucide="share-2"></i> Share
+              </button>
+              <button class="action-btn print-btn" id="print-btn">
+                <i data-lucide="printer"></i> Print
+              </button>
+            </div>
           </div>
-          <div id="category-sections"></div>
+
+          <div class="article-image-container">
+            <img id="article-image" alt="" />
+          </div>
+
+          <div class="article-content">
+            <div class="article-body" id="article-body"></div>
+
+            <div class="article-footer">
+              <div class="article-tags" id="article-tags"></div>
+              <div class="article-share">
+                <h4>Share this article</h4>
+                <div class="social-share">
+                  <button class="share-social-btn" data-platform="facebook">
+                    <i data-lucide="facebook"></i>
+                  </button>
+                  <button class="share-social-btn" data-platform="twitter">
+                    <i data-lucide="twitter"></i>
+                  </button>
+                  <button class="share-social-btn" data-platform="linkedin">
+                    <i data-lucide="linkedin"></i>
+                  </button>
+                  <button class="share-social-btn" data-platform="email">
+                    <i data-lucide="mail"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="related-articles">
+          <h2 class="section-title">
+            <i data-lucide="newspaper"></i> Related Articles
+          </h2>
+          <div class="articles-grid" id="related-articles-grid"></div>
         </div>
       </div>
     </main>
@@ -238,6 +265,6 @@
     <script src="js/data.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/search.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/article.js"></script>
   </body>
 </html>

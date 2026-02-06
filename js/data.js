@@ -17,6 +17,34 @@ const newsData = {
     },
     {
       id: 2,
+      title: "US believes its power matters more than international law, UN chief tells The Watchtower",
+      category: "World",
+      author: "Anna Foster",
+      date: "2026-01-02",
+      excerpt:
+        "The US is acting with impunity and believes its power matters more than international law, the head of the UN has told The Watchtower.",
+      content:
+        "In a momentous gathering at the International Climate Conference, representatives from 150 nations have reached a historic consensus on environmental policy. The agreement, dubbed the 'Green Horizon Pact,' establishes stringent carbon reduction targets and commits billions in funding for renewable energy infrastructure.\n\nThe pact represents years of diplomatic negotiations and marks a turning point in global environmental cooperation. Key provisions include a 50% reduction in carbon emissions by 2035, mandatory transition to renewable energy sources, and substantial financial support for developing nations to implement green technologies.\n\nEnvironmental advocates have praised the agreement as a critical step forward, though some critics argue the targets should be even more ambitious. The implementation phase begins immediately, with quarterly reviews to ensure compliance across all signatory nations.",
+      image: "../images/world2.webp",
+      trending: true,
+      views: 15420,
+    },
+    {
+      id: 3,
+      title: "China's birth rate hits record low as population continues to shrink",
+      category: "World",
+      author: "Kelly Ng",
+      date: "2026-01-02",
+      excerpt:
+        "China's birth rates sunk to a record low in 2025, despite the government rolling out a spate of incentives to boost it, as the country's population fell for the fourth straight year.",
+      content:
+        "In a momentous gathering at the International Climate Conference, representatives from 150 nations have reached a historic consensus on environmental policy. The agreement, dubbed the 'Green Horizon Pact,' establishes stringent carbon reduction targets and commits billions in funding for renewable energy infrastructure.\n\nThe pact represents years of diplomatic negotiations and marks a turning point in global environmental cooperation. Key provisions include a 50% reduction in carbon emissions by 2035, mandatory transition to renewable energy sources, and substantial financial support for developing nations to implement green technologies.\n\nEnvironmental advocates have praised the agreement as a critical step forward, though some critics argue the targets should be even more ambitious. The implementation phase begins immediately, with quarterly reviews to ensure compliance across all signatory nations.",
+      image: "../images/world3.webp",
+      trending: true,
+      views: 15420,
+    },
+    {
+      id: 4,
       title: "Tech Giant Unveils Revolutionary AI Assistant",
       category: "Technology",
       author: "David Chen",
@@ -30,63 +58,7 @@ const newsData = {
       views: 12350,
     },
     {
-      id: 3,
-      title: "Markets Rally on Strong Economic Indicators",
-      category: "Business",
-      author: "Jennifer Wallace",
-      date: "2026-01-02",
-      excerpt:
-        "Stock exchanges worldwide experience significant gains following positive employment data and consumer confidence reports.",
-      content:
-        "Financial markets across the globe celebrated robust economic data released this morning, with major indices posting their strongest single-day gains in months. The surge followed the publication of employment figures showing job creation exceeded expectations by 40%, while consumer confidence reached a five-year high.\n\nEconomists attribute the positive trends to stabilizing inflation rates and strategic monetary policies. The technology and manufacturing sectors led the rally, with several blue-chip stocks reaching record highs. Investors are increasingly optimistic about sustained economic growth through the coming quarters.\n\nMarket analysts caution that volatility may persist as central banks continue to adjust interest rates. However, the underlying economic fundamentals suggest a strong foundation for continued expansion throughout the year.",
-      image: "../images/stock.jpg",
-      trending: true,
-      views: 9870,
-    },
-    {
-      id: 4,
-      title: "Medical Breakthrough in Cancer Treatment Shows Promise",
-      category: "Health",
-      author: "Dr. Emily Rodriguez",
-      date: "2026-01-01",
-      excerpt:
-        "Researchers announce successful trials of new immunotherapy treatment with remarkable recovery rates.",
-      content:
-        "A team of international researchers has announced a significant breakthrough in cancer treatment following successful Phase III clinical trials. The new immunotherapy approach has demonstrated recovery rates exceeding 70% in previously treatment-resistant cases.\n\nThe treatment works by enhancing the body's natural immune response to identify and eliminate cancer cells more effectively. Unlike traditional chemotherapy, the new method shows minimal side effects and can be administered on an outpatient basis.\n\nMedical professionals worldwide are hailing the discovery as a potential game-changer in oncology. The therapy is expected to receive regulatory approval within the next six months and could benefit millions of patients globally.",
-      image: "../images/health.jpg",
-      trending: false,
-      views: 18920,
-    },
-    {
       id: 5,
-      title: "Championship Finals Draw Record-Breaking Attendance",
-      category: "Sports",
-      author: "Marcus Thompson",
-      date: "2026-01-02",
-      excerpt:
-        "Historic sporting event attracts largest crowd in stadium history as teams compete for prestigious title.",
-      content:
-        "Last night's championship finals shattered attendance records with over 95,000 spectators filling the stadium to witness an unforgettable match. The electric atmosphere reached fever pitch as both teams delivered exceptional performances in what many are calling the greatest game of the decade.\n\nThe match remained tied until the final moments when a spectacular play secured victory for the home team. Fans erupted in celebration as their team claimed the championship title for the first time in twenty years.\n\nSports analysts praised both teams for their sportsmanship and skill, noting that the quality of play reflected months of intensive preparation and dedication. The winning team will now advance to international competition next month.",
-      image: "../images/sport.jpg",
-      trending: true,
-      views: 22100,
-    },
-    {
-      id: 6,
-      title: "International Trade Agreement Reshapes Global Commerce",
-      category: "Business",
-      author: "Patricia Anderson",
-      date: "2026-01-01",
-      excerpt:
-        "New multilateral trade pact eliminates tariffs and streamlines customs procedures across participating nations.",
-      content:
-        "Economic ministers from thirty nations have signed a comprehensive trade agreement designed to boost international commerce and reduce barriers to trade. The pact eliminates tariffs on over 10,000 product categories and establishes standardized customs procedures.\n\nBusiness leaders anticipate the agreement will create new opportunities for small and medium-sized enterprises to access international markets. The streamlined regulations are expected to reduce shipping times and costs significantly.\n\nEconomists project the agreement could increase global trade volume by 15% over the next five years and create millions of new jobs across participating countries. Implementation begins in the second quarter of this year.",
-      image: "../images/business.jpg",
-      trending: false,
-      views: 7540,
-    },
-    {
-      id: 7,
       title: "Space Agency Announces Ambitious Mars Colony Plan",
       category: "Technology",
       author: "Dr. Robert Chang",
@@ -100,9 +72,51 @@ const newsData = {
       views: 16780,
     },
     {
+      id: 6,
+      title: "The Race to Build the DeepSeek of Europe Is On",
+      category: "Technology",
+      author: "Joel Khalili",
+      date: "2026-01-02",
+      excerpt:
+        "As Europe’s longstanding alliance with the US falters, its push to become a self-sufficient AI superpower has become more urgent.",
+      content:
+        "In a momentous gathering at the International Climate Conference, representatives from 150 nations have reached a historic consensus on environmental policy. The agreement, dubbed the 'Green Horizon Pact,' establishes stringent carbon reduction targets and commits billions in funding for renewable energy infrastructure.\n\nThe pact represents years of diplomatic negotiations and marks a turning point in global environmental cooperation. Key provisions include a 50% reduction in carbon emissions by 2035, mandatory transition to renewable energy sources, and substantial financial support for developing nations to implement green technologies.\n\nEnvironmental advocates have praised the agreement as a critical step forward, though some critics argue the targets should be even more ambitious. The implementation phase begins immediately, with quarterly reviews to ensure compliance across all signatory nations.",
+      image: "../images/tech3.webp",
+      trending: true,
+      views: 15420,
+    },
+    {
+      id: 7,
+      title: "Markets Rally on Strong Economic Indicators",
+      category: "Business",
+      author: "Jennifer Wallace",
+      date: "2026-01-02",
+      excerpt:
+        "Stock exchanges worldwide experience significant gains following positive employment data and consumer confidence reports.",
+      content:
+        "Financial markets across the globe celebrated robust economic data released this morning, with major indices posting their strongest single-day gains in months. The surge followed the publication of employment figures showing job creation exceeded expectations by 40%, while consumer confidence reached a five-year high.\n\nEconomists attribute the positive trends to stabilizing inflation rates and strategic monetary policies. The technology and manufacturing sectors led the rally, with several blue-chip stocks reaching record highs. Investors are increasingly optimistic about sustained economic growth through the coming quarters.\n\nMarket analysts caution that volatility may persist as central banks continue to adjust interest rates. However, the underlying economic fundamentals suggest a strong foundation for continued expansion throughout the year.",
+      image: "../images/stock.jpg",
+      trending: true,
+      views: 9870,
+    },
+    {
       id: 8,
+      title: "International Trade Agreement Reshapes Global Commerce",
+      category: "Business",
+      author: "Patricia Anderson",
+      date: "2026-01-01",
+      excerpt:
+        "New multilateral trade pact eliminates tariffs and streamlines customs procedures across participating nations.",
+      content:
+        "Economic ministers from thirty nations have signed a comprehensive trade agreement designed to boost international commerce and reduce barriers to trade. The pact eliminates tariffs on over 10,000 product categories and establishes standardized customs procedures.\n\nBusiness leaders anticipate the agreement will create new opportunities for small and medium-sized enterprises to access international markets. The streamlined regulations are expected to reduce shipping times and costs significantly.\n\nEconomists project the agreement could increase global trade volume by 15% over the next five years and create millions of new jobs across participating countries. Implementation begins in the second quarter of this year.",
+      image: "../images/business.jpg",
+      trending: false,
+      views: 7540,
+    },
+    {
+      id: 9,
       title: "Education Reform Initiative Transforms Learning Methods",
-      category: "World",
+      category: "Business",
       author: "Linda Martinez",
       date: "2026-01-01",
       excerpt:
@@ -112,6 +126,90 @@ const newsData = {
       image: "../images/education.jpg",
       trending: false,
       views: 11230,
+    },
+    {
+      id: 10,
+      title: "Medical Breakthrough in Cancer Treatment Shows Promise",
+      category: "Health",
+      author: "Emily Rodriguez",
+      date: "2026-01-01",
+      excerpt:
+        "Researchers announce successful trials of new immunotherapy treatment with remarkable recovery rates.",
+      content:
+        "A team of international researchers has announced a significant breakthrough in cancer treatment following successful Phase III clinical trials. The new immunotherapy approach has demonstrated recovery rates exceeding 70% in previously treatment-resistant cases.\n\nThe treatment works by enhancing the body's natural immune response to identify and eliminate cancer cells more effectively. Unlike traditional chemotherapy, the new method shows minimal side effects and can be administered on an outpatient basis.\n\nMedical professionals worldwide are hailing the discovery as a potential game-changer in oncology. The therapy is expected to receive regulatory approval within the next six months and could benefit millions of patients globally.",
+      image: "../images/health.webp",
+      trending: false,
+      views: 18920,
+    },
+    {
+      id: 11,
+      title: "Alzheimer's finger-prick test could help diagnosis",
+      category: "Health",
+      author: "Fergus Walsh",
+      date: "2026-01-01",
+      excerpt:
+        "An international trial is examining whether a finger-prick blood test could be used to help diagnose Alzheimer's disease.",
+      content:
+        "A team of international researchers has announced a significant breakthrough in cancer treatment following successful Phase III clinical trials. The new immunotherapy approach has demonstrated recovery rates exceeding 70% in previously treatment-resistant cases.\n\nThe treatment works by enhancing the body's natural immune response to identify and eliminate cancer cells more effectively. Unlike traditional chemotherapy, the new method shows minimal side effects and can be administered on an outpatient basis.\n\nMedical professionals worldwide are hailing the discovery as a potential game-changer in oncology. The therapy is expected to receive regulatory approval within the next six months and could benefit millions of patients globally.",
+      image: "../images/health2.webp",
+      trending: false,
+      views: 18920,
+    },
+    {
+      id: 12,
+      title: "Nestle issues global recall of some baby formula products over toxin fears",
+      category: "Health",
+      author: "Archie Mitchell",
+      date: "2026-01-01",
+      excerpt:
+        "Researchers announce successful trials of new immunotherapy treatment with remarkable recovery rates.",
+      content:
+        "A team of international researchers has announced a significant breakthrough in cancer treatment following successful Phase III clinical trials. The new immunotherapy approach has demonstrated recovery rates exceeding 70% in previously treatment-resistant cases.\n\nThe treatment works by enhancing the body's natural immune response to identify and eliminate cancer cells more effectively. Unlike traditional chemotherapy, the new method shows minimal side effects and can be administered on an outpatient basis.\n\nMedical professionals worldwide are hailing the discovery as a potential game-changer in oncology. The therapy is expected to receive regulatory approval within the next six months and could benefit millions of patients globally.",
+      image: "../images/health3.webp",
+      trending: false,
+      views: 18920,
+    },
+    {
+      id: 13,
+      title: "Championship Finals Draw Record-Breaking Attendance",
+      category: "Sports",
+      author: "Marcus Thompson",
+      date: "2026-01-02",
+      excerpt:
+        "Historic sporting event attracts largest crowd in stadium history as teams compete for prestigious title.",
+      content:
+        "Last night's championship finals shattered attendance records with over 95,000 spectators filling the stadium to witness an unforgettable match. The electric atmosphere reached fever pitch as both teams delivered exceptional performances in what many are calling the greatest game of the decade.\n\nThe match remained tied until the final moments when a spectacular play secured victory for the home team. Fans erupted in celebration as their team claimed the championship title for the first time in twenty years.\n\nSports analysts praised both teams for their sportsmanship and skill, noting that the quality of play reflected months of intensive preparation and dedication. The winning team will now advance to international competition next month.",
+      image: "../images/sport.jpg",
+      trending: true,
+      views: 22100,
+    },
+    {
+      id: 14,
+      title: "Cristiano Ronaldo transfer news: Al Nassr forward wants to continue strike over funding as Saudi officials release statement",
+      category: "Sports",
+      author: "Marcus Thompson",
+      date: "2026-01-02",
+      excerpt:
+        "Cristiano Ronaldo's transfer situation continues to evolve as Al Nassr forward seeks resolution over funding issues.",
+      content:
+        "Last night's championship finals shattered attendance records with over 95,000 spectators filling the stadium to witness an unforgettable match. The electric atmosphere reached fever pitch as both teams delivered exceptional performances in what many are calling the greatest game of the decade.\n\nThe match remained tied until the final moments when a spectacular play secured victory for the home team. Fans erupted in celebration as their team claimed the championship title for the first time in twenty years.\n\nSports analysts praised both teams for their sportsmanship and skill, noting that the quality of play reflected months of intensive preparation and dedication. The winning team will now advance to international competition next month.",
+      image: "../images/ronaldo.jpg",
+      trending: true,
+      views: 22100,
+    },
+    {
+      id: 15,
+      title: "France 36-14 Ireland: Defending Six Nations champions clinch bonus-point victory as visitors pay for abject 50 minutes",
+      category: "Sports",
+      author: "Marcus Thompson",
+      date: "2026-01-02",
+      excerpt:
+        "France's dominant performance in the Six Nations sees them secure a bonus-point win over Ireland.",
+      content:
+        "Last night's championship finals shattered attendance records with over 95,000 spectators filling the stadium to witness an unforgettable match. The electric atmosphere reached fever pitch as both teams delivered exceptional performances in what many are calling the greatest game of the decade.\n\nThe match remained tied until the final moments when a spectacular play secured victory for the home team. Fans erupted in celebration as their team claimed the championship title for the first time in twenty years.\n\nSports analysts praised both teams for their sportsmanship and skill, noting that the quality of play reflected months of intensive preparation and dedication. The winning team will now advance to international competition next month.",
+      image: "../images/france.jpg",
+      trending: true,
+      views: 22100,
     },
   ],
 

@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Watchtower - Daily News</title>
+    <title>Category - The Watchtower</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/additional-styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.562.0/dist/umd/lucide.min.js"></script>
   </head>
   <body>
@@ -53,9 +54,7 @@
         </button>
         <ul id="nav-menu">
           <li>
-            <a href="index.html" class="active"
-              ><i data-lucide="home"></i> Home</a
-            >
+            <a href="index.html"><i data-lucide="home"></i> Home</a>
           </li>
           <li>
             <a href="category.html?cat=World"
@@ -92,34 +91,34 @@
     </header>
 
     <main>
-      <div class="trending-bar">
-        <div class="trending-container">
-          <div class="trending-content">
-            <span class="trending-label">
-              <i data-lucide="trending-up"></i> Trending Now
-            </span>
-            <div class="trending-topics" id="trending-topics"></div>
-          </div>
-        </div>
-      </div>
-
       <div class="container">
-        <div class="search-results" id="search-results" style="display: none">
-          <div class="search-results-header">
-            <h2 id="search-results-title">Search Results</h2>
-            <button id="clear-search" class="clear-search-btn">
-              <i data-lucide="x"></i> Clear Search
-            </button>
-          </div>
-          <div class="articles-grid" id="search-results-grid"></div>
-        </div>
+        <div class="breadcrumb" id="breadcrumb"></div>
 
-        <div id="homepage-content">
-          <div class="homepage-grid">
-            <div class="featured-article" id="featured-article"></div>
-            <div class="sidebar" id="sidebar-articles"></div>
+        <div class="category-page">
+          <div class="category-page-header">
+            <h1 id="category-title"></h1>
+            <p id="category-description"></p>
           </div>
-          <div id="category-sections"></div>
+
+          <div class="category-filters">
+            <div class="filter-group">
+              <label for="sort-select">Sort by:</label>
+              <select id="sort-select" class="filter-select">
+                <option value="recent">Most Recent</option>
+                <option value="popular">Most Popular</option>
+                <option value="trending">Trending</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="articles-grid" id="category-articles-grid"></div>
+
+          <div class="no-articles" id="no-articles" style="display: none">
+            <i data-lucide="file-x"></i>
+            <h3>No Articles Found</h3>
+            <p>There are no articles in this category yet.</p>
+            <a href="index.html" class="read-more">Back to Home</a>
+          </div>
         </div>
       </div>
     </main>
@@ -238,6 +237,6 @@
     <script src="js/data.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/search.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/category.js"></script>
   </body>
 </html>
