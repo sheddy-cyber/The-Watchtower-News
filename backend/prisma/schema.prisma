@@ -1,0 +1,100 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String    @id @default(cuid())
+  name              String
+  email             String    @unique
+  passwordHash      String
+  emailVerified     Boolean   @default(false)
+  emailVerifyToken  String?   @unique
+  resetToken        String?   @unique
+  resetTokenExpiry  DateTime?
+  role              Role      @default(READER)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  refreshTokens     RefreshToken[]
+  bookmarks         Bookmark[]
+
+  @@index([email])
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Article {
+  id          Int       @id @default(autoincrement())
+  title       String
+  slug        String    @unique
+  category    Category
+  author      String
+  excerpt     String
+  content     String    @db.Text
+  imageUrl    String
+  trending    Boolean   @default(false)
+  views       Int       @default(0)
+  publishedAt DateTime  @default(now())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  bookmarks   Bookmark[]
+
+  @@index([category])
+  @@index([trending])
+  @@index([publishedAt])
+}
+
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  articleId Int
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, articleId])
+  @@index([userId])
+}
+
+model NewsletterSubscriber {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  confirmed     Boolean   @default(false)
+  confirmToken  String?   @unique
+  unsubToken    String    @unique @default(cuid())
+  subscribedAt  DateTime  @default(now())
+
+  @@index([email])
+}
+
+enum Role {
+  READER
+  EDITOR
+  ADMIN
+}
+
+enum Category {
+  World
+  Technology
+  Business
+  Health
+  Sports
+}

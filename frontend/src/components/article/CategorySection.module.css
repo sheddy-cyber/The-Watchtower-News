@@ -1,0 +1,10 @@
+/* frontend/src/components/article/CategorySection.module.css */
+
+.section {
+  margin-bottom: 56px;
+}
+
+.icon {
+  font-size: 18px;
+  line-height: 1;
+}
