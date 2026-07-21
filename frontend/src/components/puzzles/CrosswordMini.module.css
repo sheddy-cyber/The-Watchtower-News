@@ -54,8 +54,19 @@
   background: color-mix(in srgb, var(--color-accent) 15%, transparent);
 }
 
+.filledCell {
+  background: var(--color-accent);
+}
+
+.filledCell .cellText,
+.filledCell .cellNum {
+  color: #ffffff;
+}
+
 .activeCell {
   background: var(--color-accent);
+  box-shadow: inset 0 0 0 2px var(--bg-surface), inset 0 0 0 4px var(--color-accent-hover);
+  z-index: 2;
 }
 
 .activeCell .cellText,

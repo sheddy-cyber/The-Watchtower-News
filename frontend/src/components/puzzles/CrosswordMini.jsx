@@ -195,8 +195,11 @@ export default function CrosswordMini() {
               const isActive = isCellActive(r, c);
               const isWord = isCellInActiveWord(r, c);
               
+              const hasLetter = cell !== "";
+              
               let cellClass = styles.cell;
               if (isActive) cellClass += ` ${styles.activeCell}`;
+              else if (hasLetter) cellClass += ` ${styles.filledCell}`;
               else if (isWord) cellClass += ` ${styles.wordCell}`;
 
               return (
