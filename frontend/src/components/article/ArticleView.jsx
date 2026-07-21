@@ -57,7 +57,22 @@ export default function ArticleView({ article }) {
       <img src={article.imageUrl} alt={article.title} className={styles.heroImg} />
 
       <div className={styles.header}>
-        <CategoryBadge category={article.category} />
+        <div className={styles.categoryRow}>
+          <CategoryBadge category={article.category} />
+          <div className={styles.actionsContainer}>
+            <button
+              className={`btn btn-outline ${styles.actionBtn} ${saved ? "active" : ""}`}
+              onClick={() => toggle(article.id)}
+              title={saved ? "Remove Bookmark" : "Save Bookmark"}
+            >
+              <Icon name={saved ? "bookmarkFilled" : "bookmark"} size={16} />
+            </button>
+            <button className={`btn btn-outline ${styles.actionBtn}`} onClick={share} title="Share Article">
+              <Icon name="share" size={16} />
+            </button>
+          </div>
+        </div>
+        
         <h1 className={styles.title}>{article.title}</h1>
 
         <div className={styles.metaBar}>
@@ -71,20 +86,6 @@ export default function ArticleView({ article }) {
               {formatViews(article.views)}
             </span>
           </div>
-        </div>
-
-        <div className={styles.actionsContainer}>
-          <button
-            className={`btn btn-outline ${styles.actionBtn} ${saved ? "active" : ""}`}
-            onClick={() => toggle(article.id)}
-          >
-            <Icon name={saved ? "bookmarkFilled" : "bookmark"} size={14} />
-            <span className={styles.actionText}>{saved ? "Saved to Bookmarks" : "Save Article"}</span>
-          </button>
-          <button className={`btn btn-outline ${styles.actionBtn}`} onClick={share}>
-            <Icon name="share" size={14} />
-            <span className={styles.actionText}>Share</span>
-          </button>
         </div>
       </div>
 
