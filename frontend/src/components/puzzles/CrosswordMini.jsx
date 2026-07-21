@@ -40,11 +40,12 @@ export default function CrosswordMini() {
   const [gameWon, setGameWon] = useState(false);
 
   const containerRef = useRef(null);
+  const inputRef = useRef(null);
 
   // Focus trap for keyboard events
   useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.focus();
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
   }, []);
 
@@ -74,6 +75,7 @@ export default function CrosswordMini() {
     } else {
       setSelectedCell({ r, c });
     }
+    inputRef.current?.focus();
   };
 
   const advanceCursor = (forward = true) => {
@@ -122,8 +124,16 @@ export default function CrosswordMini() {
         newGrid[selectedCell.r][selectedCell.c] = "";
         setGrid(newGrid);
       }
-    } else if (/^[a-zA-Z]$/.test(e.key)) {
-      const char = e.key.toUpperCase();
+    }
+  };
+
+  const handleInputChange = (e) => {
+    if (gameWon) return;
+    const val = e.target.value;
+    if (!val) return;
+
+    const char = val.slice(-1).toUpperCase();
+    if (/^[A-Z]$/.test(char)) {
       const newGrid = [...grid];
       newGrid[selectedCell.r] = [...newGrid[selectedCell.r]];
       newGrid[selectedCell.r][selectedCell.c] = char;
@@ -136,6 +146,7 @@ export default function CrosswordMini() {
         advanceCursor(true);
       }
     }
+    e.target.value = "";
   };
 
   const getCellNumber = (r, c) => {
@@ -159,12 +170,23 @@ export default function CrosswordMini() {
         </div>
       )}
 
+      {/* Hidden input for mobile keyboard */}
+      <input
+        ref={inputRef}
+        type="text"
+        style={{ position: 'absolute', opacity: 0, pointerEvents: 'none', width: 0, height: 0 }}
+        onKeyDown={handleKeyDown}
+        onChange={handleInputChange}
+        value=""
+        autoComplete="off"
+        autoCorrect="off"
+        spellCheck="false"
+      />
+
       {/* Grid Area */}
       <div 
-        className={styles.gridWrapper} 
-        onKeyDown={handleKeyDown} 
-        tabIndex={0} 
-        ref={containerRef}
+        className={styles.gridWrapper}
+        onClick={() => inputRef.current?.focus()}
       >
         <div className={styles.grid}>
           {grid.map((row, r) => (
@@ -206,7 +228,7 @@ export default function CrosswordMini() {
               <li 
                 key={`a-${clue.num}`} 
                 className={direction === "across" && selectedCell.r === clue.row ? styles.activeClueItem : ""}
-                onClick={() => { setDirection("across"); setSelectedCell({ r: clue.row, c: clue.col }); containerRef.current?.focus(); }}
+                onClick={() => { setDirection("across"); setSelectedCell({ r: clue.row, c: clue.col }); inputRef.current?.focus(); }}
               >
                 <strong>{clue.num}</strong> {clue.text}
               </li>
@@ -220,7 +242,7 @@ export default function CrosswordMini() {
               <li 
                 key={`d-${clue.num}`}
                 className={direction === "down" && selectedCell.c === clue.col ? styles.activeClueItem : ""}
-                onClick={() => { setDirection("down"); setSelectedCell({ r: clue.row, c: clue.col }); containerRef.current?.focus(); }}
+                onClick={() => { setDirection("down"); setSelectedCell({ r: clue.row, c: clue.col }); inputRef.current?.focus(); }}
               >
                 <strong>{clue.num}</strong> {clue.text}
               </li>
