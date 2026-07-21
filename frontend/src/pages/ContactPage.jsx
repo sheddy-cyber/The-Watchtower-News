@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "../components/ui/Icon";
 import { useToast } from "../context/ToastContext";
+import styles from "./ContactPage.module.css";
 
 const DEPARTMENTS = [
   { icon: "newspaper", label: "Editorial", email: "editorial@watchtower.com", desc: "News tips, corrections, and story pitches" },
@@ -52,7 +53,7 @@ export default function ContactPage() {
         </p>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 340px", gap: 40, alignItems: "start" }}>
+      <div className={styles.grid}>
 
         {/* Form */}
         <div>
