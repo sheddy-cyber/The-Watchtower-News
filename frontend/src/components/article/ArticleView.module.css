@@ -59,6 +59,13 @@
   justify-content: center;
   min-width: 36px;
   height: 36px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+}
+.actionBtn:hover {
+  background: var(--bg-hover);
+  color: var(--text-body);
 }
 
 /* ── Article body ── */

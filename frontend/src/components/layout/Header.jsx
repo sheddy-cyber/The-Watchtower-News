@@ -135,6 +135,16 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link to="/saved" className={`${styles.navItem} ${location.pathname === "/saved" ? styles.navActive : ""}`}>
+                  Saved
+                </Link>
+              </li>
+              <li>
+                <Link to="/puzzles" className={`${styles.navItem} ${location.pathname === "/puzzles" ? styles.navActive : ""}`}>
+                  Puzzles
+                </Link>
+              </li>
               {/* Mobile-only: auth inside drawer */}
               <li className={styles.mobileExtras}>
                 <div className={styles.mobileExtrasRow}>
