@@ -8,6 +8,7 @@
     "start": "node src/server.js",
     "fix-images": "node prisma/fix-images.js",
     "lint": "eslint src/",
+    "build": "prisma generate && prisma db push && prisma db seed",
     "postinstall": "prisma generate"
   },
   "prisma": {
