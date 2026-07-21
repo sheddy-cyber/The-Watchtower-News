@@ -7,7 +7,8 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "fix-images": "node prisma/fix-images.js",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
