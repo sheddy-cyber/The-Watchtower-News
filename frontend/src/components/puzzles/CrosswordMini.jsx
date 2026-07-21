@@ -196,10 +196,13 @@ export default function CrosswordMini() {
               const isWord = isCellInActiveWord(r, c);
               
               const hasLetter = cell !== "";
+              const rowFilled = grid[r].every(val => val !== "");
+              const colFilled = grid.every(rowArray => rowArray[c] !== "");
+              const isCompleted = rowFilled || colFilled;
               
               let cellClass = styles.cell;
               if (isActive) cellClass += ` ${styles.activeCell}`;
-              else if (hasLetter) cellClass += ` ${styles.filledCell}`;
+              else if (hasLetter && !isCompleted) cellClass += ` ${styles.filledCell}`;
               else if (isWord) cellClass += ` ${styles.wordCell}`;
 
               return (
