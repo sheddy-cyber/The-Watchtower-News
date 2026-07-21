@@ -37,10 +37,21 @@ const getArticle = async (req, res, next) => {
     const article = await prisma.article.findUnique({ where: { id } });
     if (!article) return res.status(404).json({ error: "Article not found." });
 
+    const similar = await prisma.article.findMany({
+      where: { category: article.category, id: { not: article.id } },
+      orderBy: { publishedAt: "desc" },
+      take: 3,
+      select: {
+        id: true, title: true, slug: true, category: true,
+        author: true, excerpt: true, imageUrl: true,
+        trending: true, views: true, publishedAt: true,
+      }
+    });
+
     // Increment view count (fire-and-forget)
     prisma.article.update({ where: { id }, data: { views: { increment: 1 } } }).catch(() => {});
 
-    res.json(article);
+    res.json({ ...article, similar });
   } catch (err) {
     next(err);
   }

@@ -1,11 +1,13 @@
 // frontend/src/components/article/ArticleView.jsx
 import { useNavigate } from "react-router-dom";
+import ArticleCard from "./ArticleCard";
 import CategoryBadge from "../ui/CategoryBadge";
 import Icon from "../ui/Icon";
 import { formatDate, formatViews } from "../../lib/categories";
 import { useBookmarks } from "../../context/BookmarkContext";
 import { useToast } from "../../context/ToastContext";
 import DOMPurify from "dompurify";
+import { Helmet } from "react-helmet-async";
 import styles from "./ArticleView.module.css";
 
 export default function ArticleView({ article }) {
@@ -29,6 +31,24 @@ export default function ArticleView({ article }) {
 
   return (
     <div className={styles.wrap}>
+      <Helmet>
+        <title>{article.title} | Watchtower News</title>
+        <meta name="description" content={article.excerpt || article.title} />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={article.title} />
+        <meta property="og:description" content={article.excerpt || article.title} />
+        <meta property="og:image" content={article.imageUrl} />
+        <meta property="og:url" content={window.location.href} />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={article.title} />
+        <meta name="twitter:description" content={article.excerpt || article.title} />
+        <meta name="twitter:image" content={article.imageUrl} />
+      </Helmet>
+
       <button className="btn btn-outline" onClick={() => navigate(-1)} style={{ marginBottom: 32, gap: 6 }}>
         <Icon name="arrowLeft" size={12} />
         Back
@@ -54,16 +74,15 @@ export default function ArticleView({ article }) {
 
           <div className={styles.actions}>
             <button
-              className={`btn btn-outline${saved ? " active" : ""}`}
+              className={`btn btn-outline ${styles.actionBtn} ${saved ? "active" : ""}`}
               onClick={() => toggle(article.id)}
-              style={{ fontSize: 10, gap: 6 }}
             >
               <Icon name={saved ? "bookmarkFilled" : "bookmark"} size={12} />
-              {saved ? "Saved" : "Save"}
+              <span className={styles.actionText}>{saved ? "Saved" : "Save"}</span>
             </button>
-            <button className="btn btn-outline" onClick={share} style={{ fontSize: 10, gap: 6 }}>
+            <button className={`btn btn-outline ${styles.actionBtn}`} onClick={share}>
               <Icon name="share" size={12} />
-              Share
+              <span className={styles.actionText}>Share</span>
             </button>
           </div>
         </div>
@@ -83,6 +102,17 @@ export default function ArticleView({ article }) {
         <span className={styles.tagLineText}>End of Article</span>
         <span className={styles.tagLineDiamond} />
       </div>
+
+      {article.similar && article.similar.length > 0 && (
+        <div className={styles.similarSection}>
+          <h3 className={styles.similarTitle}>More from {article.category}</h3>
+          <div className={styles.similarGrid}>
+            {article.similar.map((sim) => (
+              <ArticleCard key={sim.id} article={sim} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

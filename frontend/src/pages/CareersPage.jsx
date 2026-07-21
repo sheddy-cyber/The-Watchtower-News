@@ -24,8 +24,8 @@ export default function CareersPage() {
 
       {/* Breadcrumb */}
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40 }}>
-        <Link to="/" style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "rgba(212,175,55,0.45)", textTransform: "uppercase" }}>Home</Link>
-        <span style={{ color: "rgba(212,175,55,0.25)" }}>›</span>
+        <Link to="/" style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "color-mix(in srgb, var(--color-accent-hover) 55%, transparent)", textTransform: "uppercase" }}>Home</Link>
+        <span style={{ color: "color-mix(in srgb, var(--color-hairline) 80%, transparent)" }}>›</span>
         <span style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "var(--gold-dim)", textTransform: "uppercase" }}>Careers</span>
       </div>
 
@@ -86,7 +86,7 @@ export default function CareersPage() {
                 transition: "border-color 0.2s, background 0.2s",
                 cursor: "pointer",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(212,175,55,0.45)"; e.currentTarget.style.background = "#1e1e1e"; }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "color-mix(in srgb, var(--color-accent-hover) 55%, transparent)"; e.currentTarget.style.background = "var(--bg-card-hover)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--gold-border)"; e.currentTarget.style.background = "var(--surface)"; }}
             >
               <div>
@@ -103,7 +103,7 @@ export default function CareersPage() {
                   <span style={{
                     fontFamily: "var(--font-ui)", fontSize: 9, fontWeight: 700, letterSpacing: "0.1em",
                     textTransform: "uppercase", padding: "2px 7px",
-                    background: role.type === "Full-time" ? "rgba(94,203,161,0.12)" : "rgba(212,175,55,0.1)",
+                    background: role.type === "Full-time" ? "rgba(94,203,161,0.12)" : "var(--gold-faint)",
                     color: role.type === "Full-time" ? "#5ecba1" : "var(--gold-dim)",
                     border: role.type === "Full-time" ? "1px solid rgba(94,203,161,0.25)" : "1px solid var(--gold-border)",
                     borderRadius: 1,
@@ -112,7 +112,7 @@ export default function CareersPage() {
                   </span>
                 </div>
               </div>
-              <Icon name="arrowRight" size={16} style={{ color: "rgba(212,175,55,0.4)", flexShrink: 0 }} />
+              <Icon name="arrowRight" size={16} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 55%, transparent)", flexShrink: 0 }} />
             </div>
           ))}
         </div>

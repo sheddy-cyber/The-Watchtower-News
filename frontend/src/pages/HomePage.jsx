@@ -5,6 +5,7 @@ import { articlesApi } from "../lib/api";
 import { CATEGORIES } from "../lib/categories";
 import HeroSection from "../components/article/HeroSection";
 import CategorySection from "../components/article/CategorySection";
+import NewsroomModules from "../components/article/NewsroomModules";
 import Icon from "../components/ui/Icon";
 import { useToast } from "../context/ToastContext";
 
@@ -33,7 +34,10 @@ export default function HomePage() {
         results.forEach((r, i) => { map[CATEGORIES[i]] = r.data.articles || []; });
         setArticlesByCategory(map);
         const all = results.flatMap((r) => r.data.articles || []);
-        setHeroArticles(all.slice(0, 4));
+        const leadStories = [...all]
+          .sort((a, b) => Number(b.trending) - Number(a.trending) || b.views - a.views)
+          .slice(0, 4);
+        setHeroArticles(leadStories);
       } catch {
         setError("Failed to load articles. Please refresh the page.");
       } finally {
@@ -55,7 +59,7 @@ export default function HomePage() {
     return (
       <div className="empty-state">
         <div className="empty-state-icon">
-          <Icon name="alertTriangle" size={40} style={{ color: "rgba(212,175,55,0.35)" }} />
+          <Icon name="alertTriangle" size={40} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 40%, transparent)" }} />
         </div>
         <h3>Something went wrong</h3>
         <p>{error}</p>
@@ -68,7 +72,13 @@ export default function HomePage() {
 
   return (
     <>
+      <div className="edition-bar">
+        <span><i /> Live coverage</span>
+        <p>Independent reporting for a changing world</p>
+        <time>{new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}</time>
+      </div>
       <HeroSection articles={heroArticles} />
+      <NewsroomModules articles={Object.values(articlesByCategory).flat()} />
       {CATEGORIES.map((cat) => (
         <CategorySection key={cat} category={cat} articles={articlesByCategory[cat] || []} />
       ))}

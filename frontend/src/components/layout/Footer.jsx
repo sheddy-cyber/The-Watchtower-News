@@ -44,7 +44,7 @@ export default function Footer() {
             <p className={styles.brand}>The Watchtower</p>
             <p className={styles.brandTagline}>Truth in Every Edition</p>
             <p className={styles.brandDesc}>
-              Independent journalism since 1892. Committed to truth, depth, and integrity in every story we tell.
+              Independent journalism since 2026. Committed to truth, depth, and integrity in every story we tell.
             </p>
             <div className={styles.socials}>
               {socials.map(({ icon, label }) => (
@@ -100,7 +100,8 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <span>© 2026 The Watchtower. All rights reserved.</span>
-          <span>Established 1892 · Independent News Since the Beginning</span>
+          <span className={styles.devCredit}>Want a cool website like this? Reach out to <a href="https://krisshedrach.dev" target="_blank" rel="noreferrer" style={{color: 'var(--gold)', textDecoration: 'none', fontWeight: 600}}>Kris Shedrach</a>.</span>
+          <span>Established 2026 · Independent News Since the Beginning</span>
         </div>
       </div>
     </footer>

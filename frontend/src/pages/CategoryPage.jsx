@@ -36,10 +36,10 @@ export default function CategoryPage() {
     <>
       {/* Breadcrumb */}
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 28 }}>
-        <Link to="/" style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "rgba(212,175,55,0.45)", textTransform: "uppercase" }}>
+        <Link to="/" style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "color-mix(in srgb, var(--color-accent-hover) 55%, transparent)", textTransform: "uppercase" }}>
           Home
         </Link>
-        <span style={{ color: "rgba(212,175,55,0.25)" }}>›</span>
+        <span style={{ color: "color-mix(in srgb, var(--color-hairline) 80%, transparent)" }}>›</span>
         <span style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "var(--gold-dim)", textTransform: "uppercase" }}>
           {cat}
         </span>
@@ -55,7 +55,7 @@ export default function CategoryPage() {
       {/* Grid */}
       {error ? (
         <div className="empty-state">
-          <div className="empty-state-icon"><Icon name="alertTriangle" size={40} style={{ color: "rgba(212,175,55,0.35)" }} /></div>
+          <div className="empty-state-icon"><Icon name="alertTriangle" size={40} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 40%, transparent)" }} /></div>
           <h3>Something went wrong</h3>
           <p>{error}</p>
           <button className="btn btn-outline" onClick={() => { setError(null); setPage(1); }} style={{ marginTop: 20, gap: 6 }}>
@@ -70,7 +70,7 @@ export default function CategoryPage() {
         </div>
       ) : !loading ? (
         <div className="empty-state">
-          <div className="empty-state-icon"><Icon name={iconName} size={40} style={{ color: "rgba(212,175,55,0.3)" }} /></div>
+          <div className="empty-state-icon"><Icon name={iconName} size={40} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 35%, transparent)" }} /></div>
           <h3>No articles yet</h3>
           <p>Check back soon for the latest {cat} coverage.</p>
         </div>

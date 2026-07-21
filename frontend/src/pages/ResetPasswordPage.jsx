@@ -93,8 +93,8 @@ export default function ResetPasswordPage() {
 
       {errors.form && (
         <div style={{
-          background: "rgba(224,92,92,0.1)", border: "1px solid rgba(224,92,92,0.35)",
-          color: "#e05c5c", padding: "10px 14px", marginBottom: 20,
+          background: "color-mix(in srgb, var(--color-error) 10%, transparent)", border: "1px solid color-mix(in srgb, var(--color-error) 35%, transparent)",
+          color: "var(--color-error)", padding: "10px 14px", marginBottom: 20,
           fontSize: 13, fontFamily: "var(--font-ui)", borderRadius: "var(--radius)",
           display: "flex", alignItems: "center", gap: 8,
         }}>

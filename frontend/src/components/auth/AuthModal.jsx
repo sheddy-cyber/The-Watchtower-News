@@ -143,13 +143,14 @@ export default function AuthModal({ onClose }) {
 
             {errors.form && (
               <div style={{
-                background: "rgba(224,92,92,0.1)", border: "1px solid rgba(224,92,92,0.4)",
-                color: "#e05c5c", padding: "10px 14px", marginBottom: 16,
+                background: "color-mix(in srgb, var(--color-error) 10%, transparent)", border: "1px solid color-mix(in srgb, var(--color-error) 40%, transparent)",
+                color: "var(--color-error)", padding: "10px 14px", marginBottom: 16,
                 fontSize: 13, fontFamily: "var(--font-ui)", borderRadius: "var(--radius)",
                 display: "flex", alignItems: "center", gap: 8,
               }}>
                 <Icon name="alertTriangle" size={13} />
                 {errors.form}
+
               </div>
             )}
 

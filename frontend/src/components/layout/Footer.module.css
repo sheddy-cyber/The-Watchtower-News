@@ -17,8 +17,11 @@
 }
 
 .brand {
-  font-family: var(--font-display);
+  font-family: var(--font-logo);
   font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
   color: var(--gold);
   margin-bottom: 4px;
 }
@@ -123,6 +126,10 @@
   font-size: 11px;
   color: var(--text-faint);
 }
+.devCredit {
+  display: block;
+  margin: 4px 0;
+}
 
 @media (max-width: 1024px) {
   .grid { grid-template-columns: 1fr 1fr; gap: 32px; }
@@ -130,6 +137,7 @@
 @media (max-width: 600px) {
   .grid { grid-template-columns: 1fr; gap: 28px; }
   .brandDesc { max-width: 100%; }
-  .bottom { flex-direction: column; text-align: center; }
+  .bottom { flex-direction: column; text-align: center; padding-bottom: 32px; gap: 12px; }
   .newsletterForm { flex-direction: column; }
+  .devCredit { font-size: 12px; }
 }

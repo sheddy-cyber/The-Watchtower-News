@@ -5,6 +5,8 @@ import HomePage from "./pages/HomePage";
 import ArticlePage from "./pages/ArticlePage";
 import CategoryPage from "./pages/CategoryPage";
 import SearchPage from "./pages/SearchPage";
+import SavedPage from "./pages/SavedPage";
+import PuzzlesPage from "./pages/PuzzlesPage";
 import ProfilePage from "./pages/ProfilePage";
 import VerifyEmailPage from "./pages/VerifyEmailPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
@@ -23,6 +25,8 @@ export default function App() {
         <Route path="/article/:id" element={<ArticlePage />} />
         <Route path="/category/:cat" element={<CategoryPage />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/saved" element={<SavedPage />} />
+        <Route path="/puzzles" element={<PuzzlesPage />} />
         <Route path="/verify-email" element={<VerifyEmailPage />} />
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/about" element={<AboutPage />} />

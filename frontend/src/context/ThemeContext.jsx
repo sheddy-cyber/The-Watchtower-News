@@ -5,8 +5,8 @@ const ThemeContext = createContext(null);
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(() => {
-    // Respect stored preference, otherwise always default to dark
-    return localStorage.getItem("wt-theme") || "dark";
+    // Respect stored preference, otherwise default to light
+    return localStorage.getItem("wt-theme") || "light";
   });
 
   useEffect(() => {

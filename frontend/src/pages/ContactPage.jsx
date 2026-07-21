@@ -33,10 +33,10 @@ export default function ContactPage() {
 
       {/* Breadcrumb */}
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40 }}>
-        <Link to="/" style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "rgba(212,175,55,0.45)", textTransform: "uppercase" }}>
+        <Link to="/" style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "color-mix(in srgb, var(--color-accent-hover) 55%, transparent)", textTransform: "uppercase" }}>
           Home
         </Link>
-        <span style={{ color: "rgba(212,175,55,0.25)" }}>›</span>
+        <span style={{ color: "color-mix(in srgb, var(--color-hairline) 80%, transparent)" }}>›</span>
         <span style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "var(--gold-dim)", textTransform: "uppercase" }}>
           Contact
         </span>
@@ -127,7 +127,7 @@ export default function ContactPage() {
             ))}
           </div>
 
-          <div style={{ marginTop: 20, padding: "16px 18px", background: "rgba(212,175,55,0.05)", border: "1px solid var(--gold-border)", borderRadius: "var(--radius)" }}>
+          <div style={{ marginTop: 20, padding: "16px 18px", background: "var(--bg-input)", border: "1px solid var(--gold-border)", borderRadius: "var(--radius)" }}>
             <p style={{ fontFamily: "var(--font-ui)", fontSize: 10, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--gold-dim)", marginBottom: 8 }}>
               Response Times
             </p>

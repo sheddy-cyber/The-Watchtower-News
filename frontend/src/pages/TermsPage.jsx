@@ -51,8 +51,8 @@ export default function TermsPage() {
 
       {/* Breadcrumb */}
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40 }}>
-        <Link to="/" style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "rgba(212,175,55,0.45)", textTransform: "uppercase" }}>Home</Link>
-        <span style={{ color: "rgba(212,175,55,0.25)" }}>›</span>
+        <Link to="/" style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "color-mix(in srgb, var(--color-accent-hover) 55%, transparent)", textTransform: "uppercase" }}>Home</Link>
+        <span style={{ color: "color-mix(in srgb, var(--color-hairline) 80%, transparent)" }}>›</span>
         <span style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "var(--gold-dim)", textTransform: "uppercase" }}>Terms of Service</span>
       </div>
 
@@ -64,7 +64,7 @@ export default function TermsPage() {
             Terms of Service
           </h1>
         </div>
-        <p style={{ fontFamily: "var(--font-ui)", fontSize: 11, color: "rgba(212,175,55,0.4)", letterSpacing: "0.08em", marginBottom: 16 }}>
+        <p style={{ fontFamily: "var(--font-ui)", fontSize: 11, color: "color-mix(in srgb, var(--color-accent-hover) 55%, transparent)", letterSpacing: "0.08em", marginBottom: 16 }}>
           Last revised: 1 January 2026 · Effective: 1 January 2026
         </p>
         <p style={{ fontSize: 17, color: "var(--text-body)", lineHeight: 1.8 }}>
@@ -82,7 +82,7 @@ export default function TermsPage() {
               <span style={{
                 fontFamily: "var(--font-ui)", fontSize: 10, fontWeight: 700,
                 color: "var(--gold)", letterSpacing: "0.1em",
-                background: "rgba(212,175,55,0.1)", border: "1px solid var(--gold-border)",
+                background: "var(--gold-faint)", border: "1px solid var(--gold-border)",
                 padding: "2px 8px", borderRadius: 1, flexShrink: 0,
               }}>
                 {String(i + 1).padStart(2, "0")}
@@ -97,14 +97,14 @@ export default function TermsPage() {
               </p>
             ))}
             {i < SECTIONS.length - 1 && (
-              <hr style={{ border: "none", borderTop: "1px solid rgba(212,175,55,0.08)", marginTop: 8 }} />
+              <hr style={{ border: "none", borderTop: "1px solid var(--color-hairline)", marginTop: 8 }} />
             )}
           </div>
         ))}
       </div>
 
       {/* Footer note */}
-      <div style={{ marginTop: 52, padding: "20px 24px", background: "rgba(212,175,55,0.04)", border: "1px solid var(--gold-border)", borderRadius: "var(--radius)" }}>
+      <div style={{ marginTop: 52, padding: "20px 24px", background: "var(--bg-input)", border: "1px solid var(--gold-border)", borderRadius: "var(--radius)" }}>
         <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.7 }}>
           <strong style={{ color: "var(--text-muted)" }}>The Watchtower Publications Ltd</strong> · Registered in England & Wales · Company No. 00892341<br />
           Registered address: 14 Fleet Street, London, EC4Y 1AA

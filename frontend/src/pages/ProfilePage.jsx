@@ -40,7 +40,7 @@ export default function ProfilePage() {
       }}>
         <div style={{
           width: 64, height: 64, borderRadius: "50%",
-          background: "rgba(212,175,55,0.12)", border: "1px solid var(--gold-border)",
+          background: "var(--gold-faint)", border: "1px solid var(--gold-border)",
           display: "flex", alignItems: "center", justifyContent: "center",
           fontFamily: "var(--font-display)", fontSize: 24, color: "var(--gold)",
           flexShrink: 0,
@@ -54,7 +54,7 @@ export default function ProfilePage() {
           <p style={{ fontFamily: "var(--font-ui)", fontSize: 12, color: "var(--gold-dim)", letterSpacing: "0.05em" }}>
             {user?.email}
           </p>
-          <p style={{ fontFamily: "var(--font-ui)", fontSize: 10, color: "rgba(212,175,55,0.3)", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: 4 }}>
+          <p style={{ fontFamily: "var(--font-ui)", fontSize: 10, color: "color-mix(in srgb, var(--color-accent-hover) 35%, transparent)", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: 4 }}>
             {user?.role || "Reader"} · Member since {user?.createdAt ? new Date(user.createdAt).getFullYear() : "2026"}
           </p>
         </div>
@@ -87,7 +87,7 @@ export default function ProfilePage() {
           ) : bookmarkError ? (
             <div className="empty-state">
               <div className="empty-state-icon">
-                <Icon name="alertTriangle" size={40} style={{ color: "rgba(212,175,55,0.35)" }} />
+                <Icon name="alertTriangle" size={40} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 40%, transparent)" }} />
               </div>
               <h3>Something went wrong</h3>
               <p>{bookmarkError}</p>
@@ -101,7 +101,7 @@ export default function ProfilePage() {
           ) : (
             <div className="empty-state">
               <div className="empty-state-icon">
-                <Icon name="bookmark" size={40} style={{ color: "rgba(212,175,55,0.3)" }} />
+                <Icon name="bookmark" size={40} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 35%, transparent)" }} />
               </div>
               <h3>No saved articles yet</h3>
               <p>Bookmark articles while reading to find them here.</p>
@@ -125,13 +125,13 @@ export default function ProfilePage() {
               <label className="form-label">Email Address</label>
               <input className="input" defaultValue={user?.email} readOnly style={{ opacity: 0.7 }} />
             </div>
-            <p style={{ fontFamily: "var(--font-ui)", fontSize: 11, color: "rgba(212,175,55,0.35)", marginTop: 8 }}>
+            <p style={{ fontFamily: "var(--font-ui)", fontSize: 11, color: "var(--color-ash)", marginTop: 8 }}>
               To update your details, please contact support.
             </p>
           </div>
 
-          <div style={{ background: "rgba(224,92,92,0.06)", border: "1px solid rgba(224,92,92,0.2)", padding: 24 }}>
-            <h3 style={{ fontFamily: "var(--font-display)", fontSize: 18, color: "#e05c5c", marginBottom: 8 }}>
+          <div style={{ background: "color-mix(in srgb, var(--color-error) 6%, transparent)", border: "1px solid color-mix(in srgb, var(--color-error) 20%, transparent)", padding: 24 }}>
+            <h3 style={{ fontFamily: "var(--font-display)", fontSize: 18, color: "var(--color-error)", marginBottom: 8 }}>
               Danger Zone
             </h3>
             <p style={{ fontSize: 14, color: "var(--muted)", marginBottom: 16, lineHeight: 1.6 }}>
@@ -139,7 +139,7 @@ export default function ProfilePage() {
             </p>
             <button
               className="btn"
-              style={{ background: "rgba(224,92,92,0.15)", color: "#e05c5c", border: "1px solid rgba(224,92,92,0.3)", fontSize: 10, gap: 6 }}
+              style={{ background: "color-mix(in srgb, var(--color-error) 15%, transparent)", color: "var(--color-error)", border: "1px solid color-mix(in srgb, var(--color-error) 30%, transparent)", fontSize: 10, gap: 6 }}
               onClick={handleLogout}
             >
               <Icon name="logOut" size={12} />

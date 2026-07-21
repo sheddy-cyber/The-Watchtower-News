@@ -40,10 +40,10 @@ export default function AboutPage() {
 
       {/* Breadcrumb */}
       <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 40 }}>
-        <Link to="/" style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "rgba(212,175,55,0.45)", textTransform: "uppercase" }}>
+        <Link to="/" style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "color-mix(in srgb, var(--color-accent-hover) 55%, transparent)", textTransform: "uppercase" }}>
           Home
         </Link>
-        <span style={{ color: "rgba(212,175,55,0.25)" }}>›</span>
+        <span style={{ color: "color-mix(in srgb, var(--color-hairline) 80%, transparent)" }}>›</span>
         <span style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.08em", color: "var(--gold-dim)", textTransform: "uppercase" }}>
           About Us
         </span>
@@ -52,13 +52,13 @@ export default function AboutPage() {
       {/* Hero */}
       <div style={{ borderLeft: "3px solid var(--gold)", paddingLeft: 28, marginBottom: 56 }}>
         <p style={{ fontFamily: "var(--font-ui)", fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--gold-dim)", marginBottom: 12 }}>
-          Established 1892
+          Established 2026
         </p>
         <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 800, color: "var(--text-heading)", lineHeight: 1.15, marginBottom: 20 }}>
           More than a century of truth-telling
         </h1>
         <p style={{ fontFamily: "var(--font-body)", fontSize: "clamp(16px, 1.8vw, 19px)", color: "var(--text-body)", lineHeight: 1.8, maxWidth: 640 }}>
-          The Watchtower was founded in 1892 by journalist and reformer Adelaide Marsh, who believed the public deserved a newspaper that answered to no-one but its readers. That conviction remains our north star today.
+          The Watchtower was founded in 2026 by journalist and reformer Adelaide Marsh, who believed the public deserved a newspaper that answered to no-one but its readers. That conviction remains our north star today.
         </p>
       </div>
 
@@ -131,7 +131,7 @@ export default function AboutPage() {
               {/* Initials avatar */}
               <div style={{
                 width: 44, height: 44, borderRadius: "50%",
-                background: "rgba(212,175,55,0.1)", border: "1px solid var(--gold-border)",
+                background: "var(--gold-faint)", border: "1px solid var(--gold-border)",
                 display: "flex", alignItems: "center", justifyContent: "center",
                 fontFamily: "var(--font-display)", fontSize: 16, color: "var(--gold)",
                 marginBottom: 14,
@@ -144,7 +144,7 @@ export default function AboutPage() {
               <p style={{ fontFamily: "var(--font-ui)", fontSize: 11, color: "var(--gold-dim)", letterSpacing: "0.05em", marginBottom: 2 }}>
                 {role}
               </p>
-              <p style={{ fontFamily: "var(--font-ui)", fontSize: 10, color: "rgba(212,175,55,0.3)", letterSpacing: "0.05em" }}>
+              <p style={{ fontFamily: "var(--font-ui)", fontSize: 10, color: "color-mix(in srgb, var(--color-accent-hover) 35%, transparent)", letterSpacing: "0.05em" }}>
                 Joined {joined}
               </p>
             </div>

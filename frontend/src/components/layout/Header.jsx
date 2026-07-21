@@ -135,17 +135,16 @@ export default function Header() {
                   </Link>
                 </li>
               ))}
-              {/* Mobile-only: theme toggle + auth inside drawer */}
+              {/* Mobile-only: auth inside drawer */}
               <li className={styles.mobileExtras}>
                 <div className={styles.mobileExtrasRow}>
-                  <ThemeToggle />
                   {user ? (
                     <button className={styles.mobileAuthBtn} onClick={logout}>
-                      <Icon name="logOut" size={12} /> Sign Out
+                      <Icon name="logOut" size={14} /> Sign Out
                     </button>
                   ) : (
                     <button className={styles.mobileAuthBtn} onClick={() => { setShowAuth(true); setMobileMenuOpen(false); }}>
-                      <Icon name="user" size={12} /> Sign In
+                      <Icon name="user" size={14} /> Sign In
                     </button>
                   )}
                 </div>
@@ -173,6 +172,9 @@ export default function Header() {
                 <Icon name="search" size={12} style={{ flexShrink: 0 }} />
                 <span className={styles.searchBtnText}>Search</span>
               </button>
+              <div className={styles.navThemeToggle}>
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         </nav>

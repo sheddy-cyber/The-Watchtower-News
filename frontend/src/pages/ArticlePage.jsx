@@ -33,7 +33,7 @@ export default function ArticlePage() {
     return (
       <div className="empty-state">
         <div className="empty-state-icon">
-          <Icon name="newspaper" size={40} style={{ color: "rgba(212,175,55,0.3)" }} />
+          <Icon name="newspaper" size={40} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 35%, transparent)" }} />
         </div>
         <h3>Article not found</h3>
         <p>This article may have been removed or the link is incorrect.</p>

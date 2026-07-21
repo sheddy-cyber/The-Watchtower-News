@@ -2,6 +2,7 @@
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+import MobileBottomNav from "./MobileBottomNav";
 import ScrollToTop from "../ui/ScrollToTop";
 
 export default function Layout() {
@@ -15,6 +16,7 @@ export default function Layout() {
         </div>
       </main>
       <Footer />
+      <MobileBottomNav />
     </div>
   );
 }

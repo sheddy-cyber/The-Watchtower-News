@@ -32,7 +32,7 @@ export default class ErrorBoundary extends Component {
             {/* CSS triangle ornament — no emoji */}
             <div style={{
               width: 52, height: 52, margin: "0 auto 24px",
-              border: "2px solid rgba(212,175,55,0.35)",
+              border: "2px solid color-mix(in srgb, var(--color-accent-hover) 40%, transparent)",
               transform: "rotate(45deg)",
               display: "flex", alignItems: "center", justifyContent: "center",
             }}>
@@ -86,11 +86,11 @@ export default class ErrorBoundary extends Component {
               <pre style={{
                 marginTop: 24,
                 padding: 16,
-                background: "rgba(224,92,92,0.08)",
-                border: "1px solid rgba(224,92,92,0.2)",
+                background: "color-mix(in srgb, var(--color-error) 8%, transparent)",
+                border: "1px solid color-mix(in srgb, var(--color-error) 20%, transparent)",
                 borderRadius: 2,
                 fontSize: 11,
-                color: "#e05c5c",
+                color: "var(--color-error)",
                 textAlign: "left",
                 overflowX: "auto",
                 whiteSpace: "pre-wrap",

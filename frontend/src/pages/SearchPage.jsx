@@ -78,7 +78,7 @@ export default function SearchPage() {
       {error && (
         <div className="empty-state">
           <div className="empty-state-icon">
-            <Icon name="alertTriangle" size={40} style={{ color: "rgba(212,175,55,0.35)" }} />
+            <Icon name="alertTriangle" size={40} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 40%, transparent)" }} />
           </div>
           <h3>Something went wrong</h3>
           <p>{error}</p>
@@ -96,7 +96,7 @@ export default function SearchPage() {
       {searched && !error && results.length === 0 && (
         <div className="empty-state">
           <div className="empty-state-icon">
-            <Icon name="search" size={40} style={{ color: "rgba(212,175,55,0.3)" }} />
+            <Icon name="search" size={40} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 35%, transparent)" }} />
           </div>
           <h3>No results found</h3>
           <p>Try a different search term or browse by category.</p>
