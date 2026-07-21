@@ -55,12 +55,12 @@
 }
 
 .filledCell {
-  background: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 20%, transparent);
 }
 
 .filledCell .cellText,
 .filledCell .cellNum {
-  color: #ffffff;
+  color: var(--text-heading);
 }
 
 .activeCell {
