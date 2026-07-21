@@ -51,7 +51,7 @@
 }
 
 .wordCell {
-  background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  background: var(--gold-faint);
 }
 
 .filledCell {
@@ -169,7 +169,7 @@
 }
 
 .activeClueItem {
-  background: color-mix(in srgb, var(--color-accent) 15%, transparent) !important;
+  background: var(--gold-faint) !important;
   color: var(--text-heading) !important;
 }
 
