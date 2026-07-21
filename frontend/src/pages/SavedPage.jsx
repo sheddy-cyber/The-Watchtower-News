@@ -34,10 +34,10 @@ export default function SavedPage() {
 
   return (
     <div>
-      <div className="section-header" style={{ marginBottom: 32 }}>
+      <div className="section-header" style={{ marginBottom: 32, justifyContent: "space-between", flexWrap: "wrap" }}>
         <div>
           <span className="eyebrow">Personal Reading List</span>
-          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(24px, 4vw, 36px)", color: "var(--text-heading)" }}>
+          <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(24px, 4vw, 36px)", color: "var(--text-heading)", lineHeight: 1.2, marginTop: 4 }}>
             Saved Articles
           </h1>
         </div>

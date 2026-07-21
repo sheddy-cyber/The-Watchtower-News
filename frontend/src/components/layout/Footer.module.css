@@ -137,7 +137,7 @@
 @media (max-width: 600px) {
   .grid { grid-template-columns: 1fr; gap: 28px; }
   .brandDesc { max-width: 100%; }
-  .bottom { flex-direction: column; text-align: center; padding-bottom: 32px; gap: 12px; }
+  .bottom { flex-direction: column; text-align: center; padding-bottom: 90px; gap: 12px; }
   .newsletterForm { flex-direction: column; }
   .devCredit { font-size: 12px; }
 }

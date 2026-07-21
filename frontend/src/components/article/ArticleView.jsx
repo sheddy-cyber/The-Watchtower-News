@@ -61,13 +61,13 @@ export default function ArticleView({ article }) {
           <CategoryBadge category={article.category} />
           <div className={styles.actionsContainer}>
             <button
-              className={`btn btn-outline ${styles.actionBtn} ${saved ? "active" : ""}`}
+              className={`${styles.actionBtn} ${saved ? styles.active : ""}`}
               onClick={() => toggle(article.id)}
               title={saved ? "Remove Bookmark" : "Save Bookmark"}
             >
               <Icon name={saved ? "bookmarkFilled" : "bookmark"} size={16} />
             </button>
-            <button className={`btn btn-outline ${styles.actionBtn}`} onClick={share} title="Share Article">
+            <button className={styles.actionBtn} onClick={share} title="Share Article">
               <Icon name="share" size={16} />
             </button>
           </div>
