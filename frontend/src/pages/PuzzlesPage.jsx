@@ -1,7 +1,7 @@
-// frontend/src/pages/PuzzlesPage.jsx
 import { useState } from "react";
 import Icon from "../components/ui/Icon";
 import { useToast } from "../context/ToastContext";
+import CrosswordMini from "../components/puzzles/CrosswordMini";
 
 const DAILY_WORDS = [
   { word: "TOWER", hint: "The fortress of truth & journalism" },
@@ -187,18 +187,7 @@ export default function PuzzlesPage() {
           </div>
         </div>
       ) : (
-        <div style={{ background: "var(--bg-surface)", border: "1px solid var(--gold-border)", padding: "40px 24px", textAlign: "center" }}>
-          <Icon name="grid" size={48} style={{ color: "var(--gold)", opacity: 0.8, marginBottom: 16 }} />
-          <h3 style={{ fontFamily: "var(--font-display)", fontSize: 24, color: "var(--text-heading)", marginBottom: 8 }}>
-            Watchtower Mini Crossword
-          </h3>
-          <p style={{ color: "var(--text-muted)", fontSize: 15, maxWidth: 420, margin: "0 auto 24px" }}>
-            Full 15x15 Sunday Crosswords are delivered in our weekend edition newsletter.
-          </p>
-          <button className="btn btn-gold" onClick={() => setActiveTab("wordle")}>
-            Play Daily Wordle <Icon name="arrowRight" size={14} />
-          </button>
-        </div>
+        <CrosswordMini />
       )}
     </div>
   );

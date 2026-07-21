@@ -1,0 +1,165 @@
+/* frontend/src/components/puzzles/CrosswordMini.module.css */
+.container {
+  background: var(--bg-surface);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.victoryBanner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  border-radius: var(--radius-sm);
+  margin-bottom: 24px;
+}
+
+.gridWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  outline: none; /* Hide default focus outline, we handle it via activeCell */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border: 2px solid var(--text-heading);
+  background: var(--text-heading); /* Grid lines */
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1;
+}
+
+.cell {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--text-heading); /* Individual cell borders */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.wordCell {
+  background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+}
+
+.activeCell {
+  background: color-mix(in srgb, var(--color-accent) 35%, transparent);
+}
+
+.cellNum {
+  position: absolute;
+  top: 2px;
+  left: 3px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.cellText {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 6vw, 28px);
+  font-weight: 700;
+  color: var(--text-heading);
+  text-transform: uppercase;
+}
+
+/* Clue Bar */
+.clueBar {
+  background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clueDir {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+}
+
+.clueText {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--text-heading);
+  font-weight: 600;
+}
+
+/* Clue Lists */
+.cluesLists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.cluesHeader {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  border-bottom: 1px solid var(--gold-border);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.clueList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.clueList li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px 6px;
+  margin: 0 -6px;
+  border-radius: var(--radius-sm);
+  line-height: 1.4;
+  transition: background 0.15s, color 0.15s;
+}
+
+.clueList li strong {
+  font-family: var(--font-ui);
+  color: var(--text-heading);
+  margin-right: 6px;
+}
+
+.clueList li:hover {
+  background: var(--bg-hover);
+}
+
+.activeClueItem {
+  background: color-mix(in srgb, var(--color-accent) 15%, transparent) !important;
+  color: var(--text-heading) !important;
+}
+
+@media (max-width: 600px) {
+  .cluesLists {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
