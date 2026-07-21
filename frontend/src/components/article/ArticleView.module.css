@@ -40,14 +40,15 @@
   border-bottom: 1px solid var(--gold-border);
 }
 
-.actions {
+.actionsContainer {
   display: flex;
-  gap: 8px;
+  gap: 12px;
+  margin-top: 24px;
 }
 .actionBtn {
-  font-size: 12px;
-  gap: 6px;
-  padding: 6px 12px;
+  font-size: 13px;
+  gap: 8px;
+  padding: 10px 16px;
 }
 .actionText {
   display: inline;
@@ -105,15 +106,6 @@
   .heroImg { max-height: 260px; margin-bottom: 24px; }
   .title { margin: 8px 0 14px; }
   .metaBar { flex-wrap: nowrap; gap: 4px; }
-  .actionText { display: none; }
-  .actionBtn { 
-    padding: 6px 4px !important; 
-    border: none !important; 
-    background: transparent !important; 
-    min-width: 0 !important;
-    box-shadow: none !important;
-  }
-  .actionBtn:hover { background: transparent !important; }
   .dropCap::first-letter { font-size: 56px; }
 }
 

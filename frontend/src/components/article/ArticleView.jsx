@@ -71,20 +71,20 @@ export default function ArticleView({ article }) {
               {formatViews(article.views)}
             </span>
           </div>
+        </div>
 
-          <div className={styles.actions}>
-            <button
-              className={`btn btn-outline ${styles.actionBtn} ${saved ? "active" : ""}`}
-              onClick={() => toggle(article.id)}
-            >
-              <Icon name={saved ? "bookmarkFilled" : "bookmark"} size={12} />
-              <span className={styles.actionText}>{saved ? "Saved" : "Save"}</span>
-            </button>
-            <button className={`btn btn-outline ${styles.actionBtn}`} onClick={share}>
-              <Icon name="share" size={12} />
-              <span className={styles.actionText}>Share</span>
-            </button>
-          </div>
+        <div className={styles.actionsContainer}>
+          <button
+            className={`btn btn-outline ${styles.actionBtn} ${saved ? "active" : ""}`}
+            onClick={() => toggle(article.id)}
+          >
+            <Icon name={saved ? "bookmarkFilled" : "bookmark"} size={14} />
+            <span className={styles.actionText}>{saved ? "Saved to Bookmarks" : "Save Article"}</span>
+          </button>
+          <button className={`btn btn-outline ${styles.actionBtn}`} onClick={share}>
+            <Icon name="share" size={14} />
+            <span className={styles.actionText}>Share</span>
+          </button>
         </div>
       </div>
 
