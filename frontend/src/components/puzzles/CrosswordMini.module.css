@@ -51,15 +51,11 @@
 }
 
 .wordCell {
-  background: var(--gold-faint);
-}
-
-.filledCell {
   background: var(--color-accent);
 }
 
-.filledCell .cellText,
-.filledCell .cellNum {
+.wordCell .cellText,
+.wordCell .cellNum {
   color: #ffffff;
 }
 
