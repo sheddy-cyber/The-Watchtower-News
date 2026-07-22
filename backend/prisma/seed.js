@@ -210,9 +210,9 @@ const articles = [
     category: "Sports",
     author: "Kris Shedrach",
     excerpt: "A parody dispatch from the 2026 World Cup final",
-    content: `There comes a moment in every man's life where he must decide: do I handle this myself like a man, or do I go and report? On Sunday night at MetLife Stadium, with the World Cup on the line, Lionel Messi looked deep into his soul and shamelessly chose the second option.
+    content: `There comes a moment in every man's life where he must decide: do I handle this myself like a man, or do I go crying to mummy like a child? On Sunday night at MetLife Stadium, with the World Cup on the line, Lionel Messi looked deep into his soul and shamelessly chose the second option.
 
-The scene: Argentina down to ten men after Enzo Fernández's second yellow, tempers boiling, and Spain's Marc Cucurella strolls over for a "quiet word" with Messi — briefly putting his hand near his mouth. Under this World Cup's new mouth-covering rule, that's technically an offence. Messi didn't shrug it off. He responded like SS2 Class Captain Chukwuemeka sprinting to the staff room the moment an assignment goes missing.
+The scene: Argentina down to ten men after Enzo Fernández's second yellow, tempers boiling, and Spain's Marc Cucurella strolls over for a "quiet word" with Messi — briefly putting his hand near his mouth. Under this World Cup's new mouth-covering rule, that's technically an offence. Messi didn't shrug it off. He responded like SS2 Class Captain Chukwuemeka sprinting to the staff room because a boy in the back row was chewing gum.
 
 Spain lifted the trophy 1–0, and yet the moment everyone kept replaying wasn't Ferran Torres' winner — it was Messi cupping his hands at referee Slavko Vinčić like a man shouting "Aunty, aunty, come and see o!"
 
@@ -220,22 +220,25 @@ The Verdict, According to Spectators
 
 Former England captain Wayne Rooney told BBC Sport it was "desperation," adding that while Argentina "play like that," it was "sad to see Lionel Messi doing that." ITV's Lee Dixon was blunter: "You shouldn't be such a baby to try and get someone sent off for that, it's ridiculous."
 
-Social media agreed. One fan on X compared it directly to snitch culture, writing that it was "like a child running to tell teacher," and "pathetic behaviour." Another summed it up: he's now, and forever will also be, "the guy who asked for an opponent to be sent off for covering his mouth in a World Cup final." Not everyone piled on, though — one Instagram commenter noted Cucurella "only touched his lips for half a second," calling the reaction wildly exaggerated.
+Social media agreed. One fan on X compared it to snitch culture, writing that it was "like a child running to tell teacher," and called it a "pathetic behaviour." Another summed it up: he's now, and forever will also be, "the guy who asked for an opponent to be sent off for covering his mouth in a World Cup final." Although one Instagram commenter noted Cucurella "only touched his lips for half a second," calling the reaction wildly exaggerated.
 
-Meanwhile, On Nigerian Twitter, This Was Always Going to Happen
+Meanwhile, On Nigerian Twitter, The Jokes Kept Writing Themselves
 
-If you went to a Nigerian secondary school, none of this surprised you. Reporting was never a last resort — it was a first instinct, with its own hall of fame:
+Anybody who went to a Nigerian school knew somebody like this:
 
-The annoying oversabi classmate who doesn't miss a chance to tell the teacher "sir when you left, this boy was speaking vernacular."
-The classmate who copies your assignment, gets caught, and points at you: "he's the one that showed me."
-The boy who starts a fight, loses it, then cries to the teacher that "he pushed me first."
-Anybody who's ever said "I will tell my mummy for you" with the confidence of a man who knows his mother will drop whatever she's doing, cross state lines, and arrive within the hour to deal with a seven-year-old.
+The oversabi classmate who doesn't miss a chance to tell the teacher, "sir, when you left, this boy was speaking vernacular." 
 
-Messi chose the actual World Cup final to summon this exact energy, and Nigerians online can't stop laughing about it. The joke writes itself in Pidgin faster than in English: "Messi don become JSS2 boy wey no fit fight, na so im dey run go report to teacher."
+The classmate who copies your assignment, gets caught, and points at you: "he's the one that showed me." 
+
+The boy who starts a fight, loses it, then cries to the teacher that "he pushed me first." 
+
+The busy-body girl who threatens you with "I will tell for you" as they expect you to crumble and beg for mercy.
+
+Messi chose the actual World Cup final to summon this exact energy, and Nigerians online can't stop laughing about it: "Messi don turn JSS2 boy wey no fit fight, na so im dey run go report to teacher."
 
 The Real Tragedy
 
-Argentina lost 1–0. Spain won their second World Cup. And the moment still dominating timelines a day later is a grown man doing his best impression of a kid trying to get someone's snack confiscated. As one fan on X put it, only half-joking: "FIFA, your baby is crying."
+Argentina lost 1–0 with a record 0 shots on target. Spain won their second World Cup. And Messi with his goons left the pitch with the reputation of being part-time area boys who can't gracefully take a humbling loss.
 
 Class of 2026 dismissed. Messi, please see the front office.`,
     imageUrl:
