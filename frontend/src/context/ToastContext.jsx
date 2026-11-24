@@ -1,25 +1,33 @@
 // frontend/src/context/ToastContext.jsx
-import { createContext, useContext, useState, useCallback } from "react";
+import { createContext, useContext, useState, useCallback, useRef } from "react";
+import Icon from "../components/ui/Icon";
 
 const ToastContext = createContext(null);
 
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
+  const nextId = useRef(0);
+
+  const dismiss = useCallback((id) => setToasts((t) => t.filter((x) => x.id !== id)), []);
 
   const showToast = useCallback((message, type = "success") => {
-    const id = Date.now();
-    setToasts((t) => [...t, { id, message, type }]);
-    setTimeout(() => setToasts((t) => t.filter((x) => x.id !== id)), 3500);
-  }, []);
+    const id = ++nextId.current;
+    // Keep at most three on screen so rapid actions don't bury the page.
+    setToasts((t) => [...t.slice(-2), { id, message, type }]);
+    setTimeout(() => dismiss(id), 3500);
+  }, [dismiss]);
 
   return (
     <ToastContext.Provider value={showToast}>
       {children}
-      <div style={{ position: "fixed", bottom: 24, right: 24, zIndex: 9999, display: "flex", flexDirection: "column", gap: 10 }}>
+      <div className="toast-stack" role="status" aria-live="polite">
         {toasts.map((t) => (
           <div key={t.id} className={`toast${t.type === "error" ? " error" : ""}`}>
             <span className="toast-dot" />
-            {t.message}
+            <span>{t.message}</span>
+            <button type="button" className="toast-close" onClick={() => dismiss(t.id)} aria-label="Dismiss notification">
+              <Icon name="close" size={12} />
+            </button>
           </div>
         ))}
       </div>

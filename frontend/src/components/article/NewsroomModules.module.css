@@ -49,10 +49,10 @@
 .popularList { padding: 8px 0 0; list-style: none; counter-reset: popular; }
 .popularList li { border-bottom: 1px solid var(--border-subtle); }
 .popularList li:last-child { border: none; }
-.popularList button { appearance: none; width: 100%; padding: 11px 0; border: none; background: transparent; color: inherit; display: grid; grid-template-columns: 31px 1fr; text-align: left; align-items: start; gap: 8px; }
-.popularList button > span { color: var(--gold); font: 700 12px var(--font-ui); padding-top: 2px; }
+.popularList a { appearance: none; width: 100%; padding: 11px 0; border: none; background: transparent; color: inherit; display: grid; grid-template-columns: 31px 1fr; text-align: left; align-items: start; gap: 8px; }
+.popularList a > span { color: var(--gold); font: 700 12px var(--font-ui); padding-top: 2px; }
 .popularList strong { color: var(--text-heading); font: 600 14px/1.28 var(--font-display); transition: color .2s; }
-.popularList button:hover strong { color: var(--gold); }
+.popularList a:hover strong { color: var(--gold); }
 .popularList small { grid-column: 2; color: var(--text-muted); display: flex; align-items: center; gap: 5px; font: 9px var(--font-ui); margin-top: 4px; }
 
 .focusGrid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(290px, .8fr); min-height: 390px; border-radius: var(--radius); overflow: hidden; }
@@ -153,3 +153,8 @@
   .newsletterMark { margin-left: 4px; }
   .newsletterForm { grid-template-columns: 1fr; }
 }
+
+/* Story tiles are links now — make them block boxes and keep fallbacks full-bleed */
+.focusStory, .photoCard { display: block; }
+.focusStory > :global(.img-fallback),
+.photoCard > :global(.img-fallback) { position: absolute; inset: 0; }

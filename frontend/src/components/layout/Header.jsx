@@ -1,44 +1,36 @@
 // frontend/src/components/layout/Header.jsx
-import { useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { articlesApi } from "../../lib/api";
 import { CATEGORIES } from "../../lib/categories";
 import AuthModal from "../auth/AuthModal";
 import Icon from "../ui/Icon";
 import ThemeToggle from "../ui/ThemeToggle";
+import HeaderSearch from "./HeaderSearch";
 import styles from "./Header.module.css";
 
 export default function Header() {
-  const navigate = useNavigate();
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [trending, setTrending] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
   const [showAuth, setShowAuth] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const searchRef = useRef();
 
   useEffect(() => {
     articlesApi.trending().then((r) => setTrending(r.data)).catch(() => {});
   }, []);
 
-  useEffect(() => { setMobileMenuOpen(false); }, [location.pathname]);
-
   useEffect(() => {
     if (location.state?.openAuth) {
       setShowAuth(true);
-      window.history.replaceState({}, document.title);
+      // Clear the flag without wiping the router's own history state
+      navigate(`${location.pathname}${location.search}`, { replace: true, state: null });
     }
-  }, [location.state]);
+  }, [location.state, location.pathname, location.search, navigate]);
 
-  const doSearch = () => {
-    const q = searchQuery.trim();
-    if (!q) return;
-    navigate(`/search?q=${encodeURIComponent(q)}`);
-    setSearchQuery("");
-    setMobileMenuOpen(false);
-  };
+  const isActive = (path) => location.pathname.toLowerCase() === path.toLowerCase();
+  const navClass = (path) => `${styles.navItem} ${isActive(path) ? styles.navActive : ""}`;
 
   const today = new Date().toLocaleDateString("en-US", {
     weekday: "long", year: "numeric", month: "long", day: "numeric",
@@ -57,10 +49,16 @@ export default function Header() {
             <div className={styles.tickerTrack}>
               <div className={styles.tickerInner}>
                 {[...trending, ...trending].map((a, i) => (
-                  <span key={i} className={styles.tickerItem} onClick={() => navigate(`/article/${a.id}`)}>
+                  <Link
+                    key={i}
+                    to={`/article/${a.id}`}
+                    className={styles.tickerItem}
+                    aria-hidden={i >= trending.length ? "true" : undefined}
+                    tabIndex={i >= trending.length ? -1 : undefined}
+                  >
                     <Icon name="dot" size={6} style={{ opacity: 0.5, marginRight: 2 }} />
                     {a.title}
-                  </span>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -109,19 +107,11 @@ export default function Header() {
 
       {/* ── STICKY NAV — always visible at top ── */}
       <div className={styles.stickyBar}>
-        <nav>
+        <nav aria-label="Sections">
           <div className={styles.navInner}>
-            <button
-              className={styles.hamburger}
-              onClick={() => setMobileMenuOpen((o) => !o)}
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              <Icon name={mobileMenuOpen ? "close" : "menu"} size={20} style={{ color: "var(--gold)" }} />
-            </button>
-
-            <ul className={`${styles.navLinks} ${mobileMenuOpen ? styles.navOpen : ""}`}>
+            <ul className={styles.navLinks}>
               <li>
-                <Link to="/" className={`${styles.navItem} ${location.pathname === "/" ? styles.navActive : ""}`}>
+                <Link to="/" className={navClass("/")} aria-current={isActive("/") ? "page" : undefined}>
                   Home
                 </Link>
               </li>
@@ -129,59 +119,27 @@ export default function Header() {
                 <li key={cat}>
                   <Link
                     to={`/category/${cat}`}
-                    className={`${styles.navItem} ${location.pathname === `/category/${cat}` ? styles.navActive : ""}`}
+                    className={navClass(`/category/${cat}`)}
+                    aria-current={isActive(`/category/${cat}`) ? "page" : undefined}
                   >
                     {cat}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link to="/saved" className={`${styles.navItem} ${location.pathname === "/saved" ? styles.navActive : ""}`}>
+                <Link to="/saved" className={navClass("/saved")} aria-current={isActive("/saved") ? "page" : undefined}>
                   Saved
                 </Link>
               </li>
               <li>
-                <Link to="/puzzles" className={`${styles.navItem} ${location.pathname === "/puzzles" ? styles.navActive : ""}`}>
+                <Link to="/puzzles" className={navClass("/puzzles")} aria-current={isActive("/puzzles") ? "page" : undefined}>
                   Puzzles
                 </Link>
-              </li>
-              {/* Mobile-only: auth inside drawer */}
-              <li className={styles.mobileExtras}>
-                <div className={styles.mobileExtrasRow}>
-                  {user ? (
-                    <button className={styles.mobileAuthBtn} onClick={logout}>
-                      <Icon name="logOut" size={14} /> Sign Out
-                    </button>
-                  ) : (
-                    <button className={styles.mobileAuthBtn} onClick={() => { setShowAuth(true); setMobileMenuOpen(false); }}>
-                      <Icon name="user" size={14} /> Sign In
-                    </button>
-                  )}
-                </div>
               </li>
             </ul>
 
             <div className={styles.searchRow}>
-              <div className={styles.searchWrap}>
-                <Icon name="search" size={14} className={styles.searchIcon} />
-                <input
-                  ref={searchRef}
-                  className={styles.searchInput}
-                  placeholder="Search articles, authors…"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && doSearch()}
-                  aria-label="Search"
-                />
-              </div>
-              <button
-                className={`btn btn-gold ${styles.searchBtn}`}
-                onClick={doSearch}
-                style={{ padding: "7px 16px", fontSize: 10, flexShrink: 0 }}
-              >
-                <Icon name="search" size={12} style={{ flexShrink: 0 }} />
-                <span className={styles.searchBtnText}>Search</span>
-              </button>
+              <HeaderSearch />
               <div className={styles.navThemeToggle}>
                 <ThemeToggle />
               </div>

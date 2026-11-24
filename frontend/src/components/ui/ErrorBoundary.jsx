@@ -38,24 +38,24 @@ export default class ErrorBoundary extends Component {
             }}>
               <span style={{
                 transform: "rotate(-45deg)",
-                fontFamily: "'Montserrat', sans-serif",
+                fontFamily: "var(--font-ui)",
                 fontSize: 22,
-                color: "rgba(212,175,55,0.5)",
+                color: "var(--color-accent)",
                 fontWeight: 700,
                 lineHeight: 1,
               }}>!</span>
             </div>
 
             <h1 style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
+              fontFamily: "var(--font-display)",
               fontSize: "clamp(22px, 4vw, 30px)",
-              color: "#d4af37",
+              color: "var(--color-accent)",
               marginBottom: 12,
             }}>
               Something went wrong
             </h1>
             <p style={{
-              fontFamily: "'Crimson Pro', Georgia, serif",
+              fontFamily: "var(--font-body)",
               fontSize: 16,
               color: "var(--text-muted)",
               lineHeight: 1.7,
@@ -66,11 +66,11 @@ export default class ErrorBoundary extends Component {
             <button
               onClick={() => window.location.reload()}
               style={{
-                background: "#d4af37",
-                color: "var(--bg-page)",
+                background: "var(--color-accent)",
+                color: "#fff",
                 border: "none",
                 padding: "10px 28px",
-                fontFamily: "'Montserrat', Arial, sans-serif",
+                fontFamily: "var(--font-ui)",
                 fontSize: 11,
                 fontWeight: 700,
                 letterSpacing: "0.12em",

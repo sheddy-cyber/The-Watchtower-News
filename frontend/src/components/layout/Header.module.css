@@ -50,7 +50,10 @@
   align-items: center;
 }
 .tickerInner:hover { animation-play-state: paused; }
+.tickerTrack:hover .tickerInner,
+.tickerTrack:focus-within .tickerInner { animation-play-state: paused; }
 .tickerItem {
+  color: inherit;
   cursor: pointer;
   transition: opacity 0.2s;
   display: flex;
@@ -254,6 +257,12 @@
 
 .mobileAuth { display: none; }
 .mobileExtras { display: none; }
+
+/* ── Narrower desktops: tighten nav so search never clips ── */
+@media (max-width: 1240px) and (min-width: 901px) {
+  .navInner { padding: 0 24px; }
+  .navItem { padding: 14px 11px; font-size: 12px; }
+}
 
 /* ── Mobile ── */
 @media (max-width: 900px) {

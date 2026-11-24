@@ -6,7 +6,10 @@ import { CATEGORIES } from "../lib/categories";
 import HeroSection from "../components/article/HeroSection";
 import CategorySection from "../components/article/CategorySection";
 import NewsroomModules from "../components/article/NewsroomModules";
+import RecentlyRead from "../components/article/RecentlyRead";
 import Icon from "../components/ui/Icon";
+import PageMeta from "../components/ui/PageMeta";
+import { HomeSkeleton } from "../components/ui/Skeleton";
 import { useToast } from "../context/ToastContext";
 
 export default function HomePage() {
@@ -24,12 +27,18 @@ export default function HomePage() {
     }
   }, [searchParams, setSearchParams, showToast]);
 
+  const [attempt, setAttempt] = useState(0);
+
   useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setError(null);
     const fetchAll = async () => {
       try {
         const results = await Promise.all(
           CATEGORIES.map((cat) => articlesApi.byCategory(cat, 1))
         );
+        if (cancelled) return;
         const map = {};
         results.forEach((r, i) => { map[CATEGORIES[i]] = r.data.articles || []; });
         setArticlesByCategory(map);
@@ -39,19 +48,21 @@ export default function HomePage() {
           .slice(0, 4);
         setHeroArticles(leadStories);
       } catch {
-        setError("Failed to load articles. Please refresh the page.");
+        if (!cancelled) setError("We couldn't load today's edition. Check your connection and try again.");
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
     fetchAll();
-  }, []);
+    return () => { cancelled = true; };
+  }, [attempt]);
 
   if (loading) {
     return (
-      <div className="page-loader">
-        <span className="spinner" style={{ width: 36, height: 36 }} />
-      </div>
+      <>
+        <PageMeta />
+        <HomeSkeleton />
+      </>
     );
   }
 
@@ -63,8 +74,8 @@ export default function HomePage() {
         </div>
         <h3>Something went wrong</h3>
         <p>{error}</p>
-        <button className="btn btn-outline" onClick={() => window.location.reload()} style={{ marginTop: 20, gap: 6 }}>
-          <Icon name="refreshCw" size={12} /> Refresh
+        <button className="btn btn-outline" onClick={() => setAttempt((n) => n + 1)} style={{ marginTop: 20, gap: 6 }}>
+          <Icon name="refreshCw" size={12} /> Try again
         </button>
       </div>
     );
@@ -72,12 +83,14 @@ export default function HomePage() {
 
   return (
     <>
+      <PageMeta />
       <div className="edition-bar">
         <span><i /> Live coverage</span>
         <p>Independent reporting for a changing world</p>
         <time>{new Date().toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })}</time>
       </div>
       <HeroSection articles={heroArticles} />
+      <RecentlyRead />
       <NewsroomModules articles={Object.values(articlesByCategory).flat()} />
       {CATEGORIES.map((cat) => (
         <CategorySection key={cat} category={cat} articles={articlesByCategory[cat] || []} />

@@ -1,48 +1,61 @@
 // frontend/src/pages/ArticlePage.jsx
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { articlesApi } from "../lib/api";
 import ArticleView from "../components/article/ArticleView";
 import Icon from "../components/ui/Icon";
+import PageMeta from "../components/ui/PageMeta";
+import { ArticleSkeleton } from "../components/ui/Skeleton";
+import NotFoundPage from "./NotFoundPage";
 
 export default function ArticlePage() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [notFound, setNotFound] = useState(false);
+  const [status, setStatus] = useState("ok"); // ok | notFound | error
+  const [attempt, setAttempt] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
     setLoading(true);
-    setNotFound(false);
+    setStatus("ok");
     articlesApi.get(id)
-      .then((r) => setArticle(r.data))
-      .catch((err) => { if (err.response?.status === 404) setNotFound(true); })
-      .finally(() => setLoading(false));
-  }, [id]);
+      .then((r) => { if (!cancelled) setArticle(r.data); })
+      .catch((err) => {
+        if (cancelled) return;
+        const code = err.response?.status;
+        setStatus(code === 404 || code === 400 ? "notFound" : "error");
+      })
+      .finally(() => { if (!cancelled) setLoading(false); });
+    return () => { cancelled = true; };
+  }, [id, attempt]);
 
-  if (loading) {
+  if (loading) return <ArticleSkeleton />;
+
+  if (status === "notFound") {
     return (
-      <div className="page-loader">
-        <span className="spinner" style={{ width: 36, height: 36 }} />
-      </div>
+      <NotFoundPage
+        title="Article not found"
+        message="This story may have been removed, or the link is incorrect."
+      />
     );
   }
 
-  if (notFound || !article) {
+  if (status === "error" || !article) {
     return (
       <div className="empty-state">
+        <PageMeta title="Couldn't load article" />
         <div className="empty-state-icon">
-          <Icon name="newspaper" size={40} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 35%, transparent)" }} />
+          <Icon name="alertTriangle" size={40} style={{ color: "color-mix(in srgb, var(--color-accent-hover) 40%, transparent)" }} />
         </div>
-        <h3>Article not found</h3>
-        <p>This article may have been removed or the link is incorrect.</p>
-        <button className="btn btn-outline" onClick={() => navigate("/")} style={{ marginTop: 20, gap: 6 }}>
-          <Icon name="arrowLeft" size={12} /> Back to Home
+        <h3>We couldn't load this story</h3>
+        <p>Check your connection and try again.</p>
+        <button className="btn btn-outline" onClick={() => setAttempt((n) => n + 1)} style={{ marginTop: 20, gap: 6 }}>
+          <Icon name="refreshCw" size={12} /> Try again
         </button>
       </div>
     );
   }
 
-  return <ArticleView article={article} />;
+  return <ArticleView key={article.id} article={article} />;
 }

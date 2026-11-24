@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CategoryBadge from "../ui/CategoryBadge";
 import Icon from "../ui/Icon";
 import { newsletterApi } from "../../lib/api";
-import { formatDate, formatViews } from "../../lib/categories";
+import { timeAgo, formatViews } from "../../lib/categories";
 import { useToast } from "../../context/ToastContext";
+import SmartImage from "../ui/SmartImage";
 import styles from "./NewsroomModules.module.css";
 
 const SIGNALS = [
@@ -14,22 +15,21 @@ const SIGNALS = [
   { label: "Public health", value: "Developing", trend: "New" },
 ];
 
-function StoryRow({ article, index, onOpen }) {
+function StoryRow({ article, index }) {
   return (
-    <button className={styles.storyRow} onClick={() => onOpen(article.id)}>
+    <Link className={styles.storyRow} to={`/article/${article.id}`}>
       <span className={styles.storyNumber}>{String(index + 1).padStart(2, "0")}</span>
       <span className={styles.storyCopy}>
         <CategoryBadge category={article.category} style={{ marginBottom: 5, transform: "scale(0.86)", transformOrigin: "left" }} />
         <strong>{article.title}</strong>
-        <small>{article.author} · {formatDate(article.publishedAt)}</small>
+        <small>{article.author} · <time dateTime={article.publishedAt}>{timeAgo(article.publishedAt)}</time></small>
       </span>
       <Icon name="arrowRight" size={15} className={styles.storyArrow} />
-    </button>
+    </Link>
   );
 }
 
 export default function NewsroomModules({ articles }) {
-  const navigate = useNavigate();
   const showToast = useToast();
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -71,9 +71,9 @@ export default function NewsroomModules({ articles }) {
           <div><strong>{articles.length}</strong><span>stories on the desk</span></div>
           <div><strong>5</strong><span>specialist desks</span></div>
           <div><strong>24/7</strong><span>global perspective</span></div>
-          <button className={styles.pulseAction} onClick={() => navigate(`/article/${popular[0].id}`)}>
+          <Link className={styles.pulseAction} to={`/article/${popular[0].id}`}>
             Open the lead story <Icon name="arrowRight" size={14} />
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -88,7 +88,7 @@ export default function NewsroomModules({ articles }) {
           </div>
           <div className={styles.latestList}>
             {latest.slice(0, 4).map((article, index) => (
-              <StoryRow key={article.id} article={article} index={index} onOpen={(id) => navigate(`/article/${id}`)} />
+              <StoryRow key={article.id} article={article} index={index} />
             ))}
           </div>
         </div>
@@ -104,11 +104,11 @@ export default function NewsroomModules({ articles }) {
           <ol className={styles.popularList}>
             {popular.slice(0, 5).map((article, index) => (
               <li key={article.id}>
-                <button onClick={() => navigate(`/article/${article.id}`)}>
+                <Link to={`/article/${article.id}`}>
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <strong>{article.title}</strong>
                   <small><Icon name="eye" size={11} /> {formatViews(article.views)} readers</small>
-                </button>
+                </Link>
               </li>
             ))}
           </ol>
@@ -116,8 +116,8 @@ export default function NewsroomModules({ articles }) {
       </section>
 
       <section className={styles.focusGrid}>
-        <button className={styles.focusStory} onClick={() => navigate(`/article/${focus.id}`)}>
-          <img src={focus.imageUrl} alt="" />
+        <Link className={styles.focusStory} to={`/article/${focus.id}`}>
+          <SmartImage src={focus.imageUrl} alt="" />
           <span className={styles.focusShade} />
           <span className={styles.focusContent}>
             <span className={styles.eyebrow}>Editor's focus</span>
@@ -126,7 +126,7 @@ export default function NewsroomModules({ articles }) {
             <em>{focus.excerpt}</em>
             <span className={styles.focusLink}>Read the analysis <Icon name="arrowRight" size={14} /></span>
           </span>
-        </button>
+        </Link>
 
         <div className={styles.signals}>
           <div className={styles.moduleHeading}>
@@ -154,19 +154,19 @@ export default function NewsroomModules({ articles }) {
           <span className={styles.eyebrow}>The visual desk</span>
           <h2>Stories in focus</h2>
           <p>Big moments, thoughtful reporting, and the details worth a closer look.</p>
-          <button className={styles.exploreDesk} onClick={() => navigate(`/category/${photoStories[0]?.category || "World"}`)}>
-            Explore every desk <Icon name="arrowRight" size={12} />
-          </button>
+          <Link className={styles.exploreDesk} to={`/category/${photoStories[0]?.category || "World"}`}>
+            Explore the {photoStories[0]?.category || "World"} desk <Icon name="arrowRight" size={12} />
+          </Link>
         </div>
         <div className={styles.photoRail}>
           {photoStories.map((article) => (
-            <button key={article.id} className={styles.photoCard} onClick={() => navigate(`/article/${article.id}`)}>
-              <img src={article.imageUrl} alt={article.title} loading="lazy" />
+            <Link key={article.id} className={styles.photoCard} to={`/article/${article.id}`}>
+              <SmartImage src={article.imageUrl} alt="" />
               <span>
                 <CategoryBadge category={article.category} />
                 <strong>{article.title}</strong>
               </span>
-            </button>
+            </Link>
           ))}
         </div>
       </section>

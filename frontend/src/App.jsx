@@ -1,21 +1,25 @@
 // frontend/src/App.jsx
+import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import HomePage from "./pages/HomePage";
 import ArticlePage from "./pages/ArticlePage";
 import CategoryPage from "./pages/CategoryPage";
 import SearchPage from "./pages/SearchPage";
-import SavedPage from "./pages/SavedPage";
-import PuzzlesPage from "./pages/PuzzlesPage";
-import ProfilePage from "./pages/ProfilePage";
-import VerifyEmailPage from "./pages/VerifyEmailPage";
-import ResetPasswordPage from "./pages/ResetPasswordPage";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import CareersPage from "./pages/CareersPage";
-import PrivacyPage from "./pages/PrivacyPage";
-import TermsPage from "./pages/TermsPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+
+// Less-visited pages load on demand to keep the first download small.
+const SavedPage = lazy(() => import("./pages/SavedPage"));
+const PuzzlesPage = lazy(() => import("./pages/PuzzlesPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const VerifyEmailPage = lazy(() => import("./pages/VerifyEmailPage"));
+const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const CareersPage = lazy(() => import("./pages/CareersPage"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
 
 export default function App() {
   return (
@@ -42,6 +46,7 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

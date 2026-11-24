@@ -60,6 +60,10 @@
   margin-bottom: 10px;
   text-shadow: 0 2px 12px rgba(0,0,0,0.6);
 }
+.featureLink { color: inherit; }
+.featureLink::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.featureLink:focus-visible { outline: none; }
+.feature:focus-within { box-shadow: inset 0 0 0 3px var(--color-accent); }
 .featureExcerpt {
   font-size: 16px;
   font-family: var(--font-ui);
@@ -90,6 +94,7 @@
   cursor: pointer;
   transition: all 0.2s;
   backdrop-filter: blur(4px);
+  z-index: 2;
 }
 .featureBookmark:hover { border-color: var(--gold); color: var(--gold); }
 .featureBookmarkActive { color: var(--gold) !important; border-color: var(--gold) !important; }

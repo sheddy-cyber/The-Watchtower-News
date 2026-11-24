@@ -30,3 +30,24 @@ export const formatDate = (d) =>
 
 export const formatViews = (v) =>
   v >= 1000 ? (v / 1000).toFixed(1) + "K" : String(v);
+
+/** Map any casing ("world", "WORLD") to the canonical category name, or null. */
+export const normalizeCategory = (cat = "") =>
+  CATEGORIES.find((c) => c.toLowerCase() === String(cat).toLowerCase()) || null;
+
+/** "Just now", "3h ago", "Yesterday" for recent stories; a full date otherwise. */
+export const timeAgo = (d) => {
+  const date = new Date(d);
+  const diff = (Date.now() - date.getTime()) / 1000;
+  if (Number.isNaN(diff)) return "";
+  if (diff < 60) return "Just now";
+  if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+  if (diff < 172800) return "Yesterday";
+  if (diff < 604800) return `${Math.floor(diff / 86400)} days ago`;
+  return formatDate(date);
+};
+
+/** Estimated minutes to read, at ~220 words per minute. */
+export const readingTime = (text = "") =>
+  Math.max(1, Math.round(text.trim().split(/\s+/).filter(Boolean).length / 220));

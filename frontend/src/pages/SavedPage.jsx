@@ -4,11 +4,17 @@ import { useAuth } from "../context/AuthContext";
 import { useBookmarks } from "../context/BookmarkContext";
 import { bookmarksApi, articlesApi } from "../lib/api";
 import ArticleCard from "../components/article/ArticleCard";
+import RecentlyRead from "../components/article/RecentlyRead";
 import Icon from "../components/ui/Icon";
+import PageMeta from "../components/ui/PageMeta";
+import { GridSkeleton } from "../components/ui/Skeleton";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function SavedPage() {
   const { user } = useAuth();
   const { bookmarks } = useBookmarks();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [savedArticles, setSavedArticles] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,9 +40,10 @@ export default function SavedPage() {
 
   return (
     <div>
+      <PageMeta title="Saved articles" />
       <div className="section-header" style={{ marginBottom: 32, justifyContent: "space-between", flexWrap: "wrap" }}>
         <div>
-          <span className="eyebrow">Personal Reading List</span>
+          <span className="eyebrow-label" style={{ color: "var(--color-accent)" }}>Personal reading list</span>
           <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(24px, 4vw, 36px)", color: "var(--text-heading)", lineHeight: 1.2, marginTop: 4 }}>
             Saved Articles
           </h1>
@@ -49,10 +56,15 @@ export default function SavedPage() {
         </div>
       </div>
 
-      {loading ? (
-        <div className="page-loader">
-          <span className="spinner" style={{ width: 36, height: 36 }} />
+      {!user && (
+        <div className="notice-bar">
+          <Icon name="user" size={14} />
+          <span>Saved stories live on this device only. <button type="button" className="link-button" onClick={() => navigate(location.pathname, { replace: true, state: { openAuth: true } })}>Sign in</button> to keep them in sync everywhere.</span>
         </div>
+      )}
+
+      {loading ? (
+        <GridSkeleton count={3} columns={3} />
       ) : savedArticles.length > 0 ? (
         <div className="grid-3">
           {savedArticles.map((article) => (
@@ -68,10 +80,17 @@ export default function SavedPage() {
             No saved articles yet
           </h3>
           <p style={{ color: "var(--text-muted)", maxWidth: 400, margin: "8px auto 0" }}>
-            Tap the bookmark icon on any article across The Watchtower to save it for offline or later reading.
+            Tap the bookmark icon on any story to build your own reading list for later.
           </p>
+          <Link to="/" className="btn btn-gold" style={{ marginTop: 22 }}>
+            Browse today's stories <Icon name="arrowRight" size={12} />
+          </Link>
         </div>
       )}
+
+      <div style={{ marginTop: 56 }}>
+        <RecentlyRead limit={8} title="Recently read" />
+      </div>
     </div>
   );
 }
